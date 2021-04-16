@@ -11,7 +11,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_12sdp"
+        android:background="@color/white">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivBack"
@@ -40,10 +42,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_6sdp"
-            android:onClick="@{()->activity.onBackPressed()}"
+            android:onClick="@{(v)->activity.onViewClicked(v)}"
             android:padding="@dimen/_5ssp"
             android:src="@drawable/ic_baseline_close_24"
             app:layout_constraintBottom_toBottomOf="@id/tvTitle"
@@ -185,7 +188,7 @@
             app:layout_constraintTop_toBottomOf="@id/rv" />
 
         <View
-            android:id="@+id/viewBg"
+            android:id="@+id/viewBgWeight"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/bg_round_border"
@@ -195,21 +198,22 @@
             app:layout_constraintTop_toTopOf="@id/tvLBSHeading" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/btnFindMyFit"
-            android:layout_width="0dp"
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:background="@drawable/bg_round_border"
             android:elevation="0dp"
             android:gravity="center"
             android:onClick="@{(v)->activity.onViewClicked(v)}"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
             android:text="@string/continue_"
-            android:textAllCaps="true"
             android:textColor="@color/colorGrayDark"
             android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="@id/viewBg"
-            app:layout_constraintStart_toStartOf="@id/viewBg"
-            app:layout_constraintTop_toBottomOf="@id/viewBg" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewBgWeight" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPrivacyPolicy"
@@ -226,7 +230,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnFindMyFit"
+            app:layout_constraintTop_toBottomOf="@id/btnContinue"
             app:layout_constraintVertical_bias="1" />
 
         <include

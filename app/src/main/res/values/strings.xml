@@ -18,7 +18,26 @@
     <string name="privacy_policy_2">We do not share your personal information with any third party unless it is specified in the privacy policy of the entity that you are using our service through.</string>
     <string name="powered_by_X">powered by MIQYAS</string>
 
-    <string name="step_2_desc">Select your <u>Weight</u> \nby dragging the ruler horizontally</string>
+    <string name="step_2_desc">Select your <u>weight</u> \nby dragging the ruler horizontally</string>
     <string name="kg">kg</string>
 
+    <string name="step_3_desc">Select your <u>age</u> \nby selecting the drop down box</string>
+    <string-array name="arrAge">
+        <item>Select age</item>
+        <item>14–20</item>
+        <item>20–30</item>
+        <item>30–40</item>
+        <item>40–50</item>
+        <item>50–60</item>
+        <item>60+</item>
+    </string-array>
+
+    <string name="step_4_desc">Choose the <u>stomach</u> \nthat most looks like yours</string>
+    <string name="flatter">Flatter</string>
+    <string name="average">Average</string>
+    <string name="rounder">Rounder</string>
+
+    <string name="step_5_desc">Choose the <u>hips</u> \nthat look most like yours</string>
+    <string name="narrower">Narrower</string>
+    <string name="curvier">Curvier</string>
 </resources>

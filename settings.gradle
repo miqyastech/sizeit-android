@@ -1,0 +1,3 @@
+include ':FindMySize'
+include ':app'
+rootProject.name = "Femi9Tracking"

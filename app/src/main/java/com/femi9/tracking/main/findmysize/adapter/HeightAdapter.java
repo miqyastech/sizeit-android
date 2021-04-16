@@ -1,6 +1,5 @@
 package com.femi9.tracking.main.findmysize.adapter;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.femi9.tracking.R;
 import com.femi9.tracking.databinding.RowHeightBinding;
+import com.femi9.tracking.main.utils.Constants;
 
 public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.ViewHolder> {
 
@@ -38,7 +38,7 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 200;
+        return Constants.HEIGHT;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

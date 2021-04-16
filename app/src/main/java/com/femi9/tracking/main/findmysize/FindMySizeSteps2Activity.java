@@ -1,11 +1,12 @@
 package com.femi9.tracking.main.findmysize;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,24 +17,18 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.femi9.tracking.R;
 import com.femi9.tracking.databinding.ActivityFindMySizeStep2Binding;
 import com.femi9.tracking.main.findmysize.adapter.WeightAdapter;
+import com.femi9.tracking.main.utils.Constants;
 
-public class FindMySizeSteps2Activity extends AppCompatActivity {
+public class FindMySizeSteps2Activity extends BaseActivity {
 
     private ActivityFindMySizeStep2Binding binding;
     private boolean isLBSSelected;
 
-    //    min fit = 5
-//    max fit = 6 11
-    private final int minLBS = 36;
-    private final int maxLBS = 329;
-    private int lbs = 111;
-
-    private final int minKG = 36;
-    private final int maxKG = 150;
-    private int kg = 50;
+    private int selectPosition = 0;
 
     private SnapHelper snapHelper;
     private LinearLayoutManager layoutManager;
+    private boolean isFromUpDownButton = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,75 +48,76 @@ public class FindMySizeSteps2Activity extends AppCompatActivity {
 
         binding.rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (isFromUpDownButton) {
+                    isFromUpDownButton = false;
+                    return;
+                }
                 View view = snapHelper.findSnapView(layoutManager);
                 int pos = binding.rv.getChildAdapterPosition(view);
                 if (pos < 0) return;
-                if (isLBSSelected) {
-                    lbs = pos;
-                } else {
-                    kg = pos;
-                }
+                Log.e("TAG", "onScrolled: " + pos);
+                selectPosition = pos;
                 setSelectedVal();
             }
         });
+        setUpInitialValue();
+    }
 
-        layoutManager.scrollToPosition(kg);
+    private void setUpInitialValue() {
+        int pos = App.preferences.getInt(Constants.weight, 50);
+        int selPos = App.preferences.getInt(Constants.weightSel, 1);
+        layoutManager.scrollToPosition(pos);
+        setHeadingBG(selPos);
         setSelectedVal();
-        setHeadingBG(1);
     }
 
     public void onViewClicked(View view) {
         if (view == binding.tvLBSHeading) {
             setHeadingBG(0);
-            View viewSelected = snapHelper.findSnapView(layoutManager);
-            int pos = binding.rv.getChildAdapterPosition(viewSelected);
-            if (pos >= 0) {
-                layoutManager.scrollToPosition(pos - 1);
-                lbs = pos;
-                setSelectedVal();
-            }
+            setSelectedVal();
         } else if (view == binding.tvKGHeading) {
             setHeadingBG(1);
-            View viewSelected = snapHelper.findSnapView(layoutManager);
-            kg = binding.rv.getChildAdapterPosition(viewSelected);
             setSelectedVal();
         } else if (view == binding.ivArrowDownHeight) {
-            View viewSelected = snapHelper.findSnapView(layoutManager);
-            int pos = binding.rv.getChildAdapterPosition(viewSelected);
-            if (pos >= 0) {
-                layoutManager.scrollToPosition(pos - 1);
-                if (isLBSSelected) {
-                    lbs = pos;
-                } else {
-                    kg = pos;
-                }
+            if (selectPosition > 0) {
+                isFromUpDownButton = true;
+                selectPosition--;
+                Log.e("TAG", "onScrolled: " + selectPosition);
+                layoutManager.scrollToPosition(selectPosition);
                 setSelectedVal();
             }
         } else if (view == binding.ivArrowUpHeight) {
-            View viewSelected = snapHelper.findSnapView(layoutManager);
-            int pos = binding.rv.getChildAdapterPosition(viewSelected);
-            layoutManager.scrollToPosition(pos + 1);
-            if (isLBSSelected) {
-                lbs = pos;
-            } else {
-                kg = pos;
+            if (selectPosition < Constants.WEIGHT) {
+                isFromUpDownButton = true;
+                selectPosition++;
+                Log.e("TAG", "onScrolled: " + selectPosition);
+                layoutManager.scrollToPosition(selectPosition);
+                setSelectedVal();
             }
-            setSelectedVal();
         } else if (view == binding.ivBack) {
             onBackPressed();
         } else if (view == binding.tvPrivacyPolicy) {
             binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.VISIBLE);
+        } else if (view == binding.btnContinue) {
+            View viewCurrentItem = snapHelper.findSnapView(layoutManager);
+            int currentPosition = binding.rv.getChildAdapterPosition(viewCurrentItem);
+            App.preferences.putInt(Constants.weight, currentPosition);
+            App.preferences.putInt(Constants.weightSel, isLBSSelected ? 0 : 1);
+            start(FindMySizeSteps3Activity.class);
+        } else if (view == binding.ivClose) {
+            finishWithResultAndAnimation(null);
         }
     }
 
     @Override
     public void onBackPressed() {
-        if (binding.layoutPrivacyPolicy.clPPMain.getVisibility() == View.VISIBLE)
+        if (binding.layoutPrivacyPolicy.clPPMain.getVisibility() == View.VISIBLE) {
             binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.GONE);
-        else
-            finish();
+        } else {
+            finishWithAnimation();
+        }
     }
 
     private void setHeadingBG(int from) {
@@ -139,9 +135,19 @@ public class FindMySizeSteps2Activity extends AppCompatActivity {
 
     private void setSelectedVal() {
         if (isLBSSelected) {
-            binding.tvWeightVal.setText(lbs + getResources().getString(R.string.lbs));
+            binding.tvWeightVal.setText((int) (selectPosition * 2.20452) + getResources().getString(R.string.lbs));
         } else {
-            binding.tvWeightVal.setText(kg + getResources().getString(R.string.kg));
+            binding.tvWeightVal.setText(selectPosition + getResources().getString(R.string.kg));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                finishWithResultAndAnimation(data);
+            }
         }
     }
 }
