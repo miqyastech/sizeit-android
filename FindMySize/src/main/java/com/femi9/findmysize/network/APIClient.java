@@ -2,8 +2,8 @@ package com.femi9.findmysize.network;
 
 import android.app.Activity;
 
-import com.femi9.tracking.BuildConfig;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.findmysize.BuildConfig;
+import com.femi9.utils.Constants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

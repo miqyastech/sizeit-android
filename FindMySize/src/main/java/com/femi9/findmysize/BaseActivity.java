@@ -6,7 +6,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.femi9.tracking.main.utils.ProgressDialog;
+import com.femi9.utils.ProgressDialog;
+
 
 abstract public class BaseActivity extends AppCompatActivity {
 

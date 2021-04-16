@@ -6,7 +6,7 @@
 
         <variable
             name="activity"
-            type="com.femi9.tracking.main.findmysize.FindMySizeSteps5Activity" />
+            type="com.femi9.findmysize.FindMySizeSteps5Activity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

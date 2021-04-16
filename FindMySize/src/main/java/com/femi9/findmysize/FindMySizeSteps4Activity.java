@@ -9,8 +9,9 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
-import com.femi9.tracking.databinding.ActivityFindMySizeStep4Binding;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.findmysize.databinding.ActivityFindMySizeStep4Binding;
+import com.femi9.utils.Constants;
+
 
 public class FindMySizeSteps4Activity extends BaseActivity {
 

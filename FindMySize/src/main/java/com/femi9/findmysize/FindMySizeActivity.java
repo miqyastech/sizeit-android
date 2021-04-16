@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import com.femi9.tracking.databinding.ActivityFindMySizeStep1Binding;
-import com.femi9.tracking.main.findmysize.adapter.HeightAdapter;
-import com.femi9.tracking.main.findmysize.model.DataSizes;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.findmysize.adapter.HeightAdapter;
+import com.femi9.findmysize.databinding.ActivityFindMySizeStep1Binding;
+import com.femi9.findmysize.model.DataSizes;
+import com.femi9.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;

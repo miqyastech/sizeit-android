@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import com.femi9.tracking.databinding.ActivityFindMySizeStep2Binding;
-import com.femi9.tracking.main.findmysize.adapter.WeightAdapter;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.findmysize.adapter.WeightAdapter;
+import com.femi9.findmysize.databinding.ActivityFindMySizeStep2Binding;
+import com.femi9.utils.Constants;
 
 public class FindMySizeSteps2Activity extends BaseActivity {
 

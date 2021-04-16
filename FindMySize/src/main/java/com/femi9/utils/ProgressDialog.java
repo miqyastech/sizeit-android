@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
 
-import com.femi9.tracking.R;
+import com.femi9.findmysize.R;
 
 public class ProgressDialog {
     private Dialog dialog;

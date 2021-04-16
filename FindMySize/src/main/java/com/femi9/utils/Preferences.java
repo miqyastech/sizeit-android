@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.femi9.tracking.main.findmysize.model.DataSizes;
+import com.femi9.findmysize.model.DataSizes;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

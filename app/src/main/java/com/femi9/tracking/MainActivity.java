@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.femi9.findmysize.FindMySizeActivity;
 import com.femi9.tracking.databinding.ActivityMainBinding;
-import com.femi9.tracking.main.findmysize.BaseActivity;
-import com.femi9.tracking.main.findmysize.FindMySizeActivity;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.utils.Constants;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private final int request_code = 100;

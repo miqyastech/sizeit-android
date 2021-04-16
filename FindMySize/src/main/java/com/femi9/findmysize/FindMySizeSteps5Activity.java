@@ -10,12 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
-import com.femi9.tracking.databinding.ActivityFindMySizeStep5Binding;
-import com.femi9.tracking.main.findmysize.model.DataAPI;
-import com.femi9.tracking.main.findmysize.model.ResponseSize;
-import com.femi9.tracking.main.findmysize.network.APIClient;
-import com.femi9.tracking.main.findmysize.network.MainApi;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.findmysize.databinding.ActivityFindMySizeStep5Binding;
+import com.femi9.findmysize.model.DataAPI;
+import com.femi9.findmysize.model.ResponseSize;
+import com.femi9.findmysize.network.APIClient;
+import com.femi9.findmysize.network.MainApi;
+import com.femi9.utils.Constants;
 
 import org.jetbrains.annotations.NotNull;
 

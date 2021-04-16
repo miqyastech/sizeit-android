@@ -13,5 +13,8 @@
     </style>
 
     <!--progress bar-->
+    <style name="GeneralLinearProgress" parent="android:Widget.ProgressBar.Small.Inverse">
+        <item name="colorAccent">@color/black</item>
+    </style>
 
 </resources>

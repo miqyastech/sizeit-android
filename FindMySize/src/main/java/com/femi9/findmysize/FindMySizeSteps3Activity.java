@@ -7,8 +7,9 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
-import com.femi9.tracking.databinding.ActivityFindMySizeStep3Binding;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.findmysize.databinding.ActivityFindMySizeStep3Binding;
+import com.femi9.utils.Constants;
+
 
 public class FindMySizeSteps3Activity extends BaseActivity {
 

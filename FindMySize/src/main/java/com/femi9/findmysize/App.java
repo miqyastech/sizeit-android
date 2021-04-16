@@ -2,7 +2,7 @@ package com.femi9.findmysize;
 
 import android.app.Application;
 
-import com.femi9.tracking.main.utils.Preferences;
+import com.femi9.utils.Preferences;
 
 public class App extends Application {
 

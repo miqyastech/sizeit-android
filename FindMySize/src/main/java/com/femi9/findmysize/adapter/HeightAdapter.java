@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.femi9.tracking.R;
-import com.femi9.tracking.databinding.RowHeightBinding;
-import com.femi9.tracking.main.utils.Constants;
+import com.femi9.findmysize.R;
+import com.femi9.findmysize.databinding.RowHeightBinding;
+import com.femi9.utils.Constants;
 
 public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.ViewHolder> {
 

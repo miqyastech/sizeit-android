@@ -1,7 +1,7 @@
 package com.femi9.findmysize.network;
 
-import com.femi9.tracking.main.findmysize.model.DataAPI;
-import com.femi9.tracking.main.findmysize.model.ResponseSize;
+import com.femi9.findmysize.model.DataAPI;
+import com.femi9.findmysize.model.ResponseSize;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

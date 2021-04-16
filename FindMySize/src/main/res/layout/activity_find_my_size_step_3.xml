@@ -6,7 +6,7 @@
 
         <variable
             name="activity"
-            type="com.femi9.tracking.main.findmysize.FindMySizeSteps4Activity" />
+            type="com.femi9.findmysize.FindMySizeSteps3Activity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,70 +70,37 @@
             android:layout_marginTop="@dimen/_12sdp"
             android:gravity="center"
             android:lineSpacingExtra="@dimen/_3sdp"
-            android:text="@string/step_4_desc"
+            android:text="@string/step_3_desc"
             android:textColor="@color/colorGrayDark"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/viewSeparator" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_200sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:src="@drawable/stomach_average"
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spAge"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:background="@drawable/bg_round_border"
+            android:entries="@array/arrAge"
+            android:spinnerMode="dialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvHeading" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvFlatter"
+        <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:onClick="@{(v)->activity.onViewClicked(v)}"
-            android:padding="@dimen/_5sdp"
-            android:text="@string/flatter"
-            android:textColor="@color/colorGrayDark"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/tvAverage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv" />
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:rotation="-90"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/spAge"
+            app:layout_constraintEnd_toEndOf="@id/spAge"
+            app:layout_constraintTop_toTopOf="@id/spAge" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvAverage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:onClick="@{(v)->activity.onViewClicked(v)}"
-            android:padding="@dimen/_5sdp"
-            android:text="@string/average"
-            android:textColor="@color/colorGrayDark"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/tvRounder"
-            app:layout_constraintStart_toEndOf="@id/tvFlatter"
-            app:layout_constraintTop_toBottomOf="@id/iv" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvRounder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:onClick="@{(v)->activity.onViewClicked(v)}"
-            android:padding="@dimen/_5sdp"
-            android:text="@string/rounder"
-            android:textColor="@color/colorGrayDark"
-            android:textSize="@dimen/_12ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvAverage"
-            app:layout_constraintTop_toBottomOf="@id/iv" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/btnContinue"
+            android:id="@+id/btnFindMyFit"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_50sdp"
@@ -149,7 +116,7 @@
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvFlatter" />
+            app:layout_constraintTop_toBottomOf="@id/spAge" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
