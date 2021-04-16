@@ -1,12 +1,18 @@
 # findmysize
 
-#allprojects {
+allprojects {
+
 	repositories {
+	
 		...
 		maven { url "https://jitpack.io" }
+	
 	}
+	
 }
 	
-#dependencies {
+dependencies {
+
 	implementation 'com.github.ViradiyaAmit:findmysize:tag'
+	
 }
