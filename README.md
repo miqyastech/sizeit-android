@@ -1,12 +1,12 @@
 # findmysize
 
 allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
+	repositories {
+		...
+		maven { url "https://jitpack.io" }
 	}
+}
 	
-	dependencies {
-	        compile 'com.github.john990:WaveView:v0.9'
-	}
+dependencies {
+	implementation 'com.github.ViradiyaAmit:findmysize:tag'
+}
