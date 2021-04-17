@@ -9,6 +9,6 @@ allprojects {
 }
 
 dependencies {
-  implementation <span class="hljs-string">'com.github.ViradiyaAmit:findmysize:tag'
+  implementation 'com.github.ViradiyaAmit:findmysize:tag'
 }
 ```
