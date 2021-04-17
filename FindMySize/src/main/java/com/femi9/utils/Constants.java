@@ -28,4 +28,5 @@ public class Constants {
     public static final int WEIGHT = 330;
 
     public static String miqyas_fit = "miqyas_fit";
+    public static String user_id = "user_id";
 }

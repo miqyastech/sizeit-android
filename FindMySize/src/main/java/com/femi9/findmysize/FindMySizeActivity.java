@@ -24,7 +24,7 @@ import java.util.List;
 public class FindMySizeActivity extends BaseActivity {
 
     public static final String CURRENT_SIZE = "current_size";
-    public static String miqyas_fit = "";
+    public static String miqyas_fit = "", user_id = "";
 
     private ActivityFindMySizeStep1Binding binding;
     private boolean isFitSelected;
@@ -40,11 +40,21 @@ public class FindMySizeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_find_my_size_step_1);
         binding.setActivity(this);
-        if (getIntent() != null && getIntent().hasExtra(Constants.miqyas_fit)) {
-            miqyas_fit = getIntent().getStringExtra(Constants.miqyas_fit);
+        if (getIntent() != null) {
+            if (getIntent().hasExtra(Constants.user_id)) {
+                user_id = getIntent().getStringExtra(Constants.user_id);
+            } else {
+                user_id = "";
+            }
+            if (getIntent().hasExtra(Constants.miqyas_fit)) {
+                miqyas_fit = getIntent().getStringExtra(Constants.miqyas_fit);
+            } else {
+                miqyas_fit = "";
+            }
             isAttributeAvailableInList();
         } else {
             miqyas_fit = "";
+            user_id = "";
         }
         setUpHeaderView();
     }
@@ -209,8 +219,7 @@ public class FindMySizeActivity extends BaseActivity {
     }
 
     /**
-     * @return
-     * GET ALL PRODUCT SIZES WITH NAME IF AVAILABLE
+     * @return GET ALL PRODUCT SIZES WITH NAME IF AVAILABLE
      */
     public static List<DataSizes> getAllSizes() {
         if (hasSizes()) {

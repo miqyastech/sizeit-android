@@ -18,7 +18,7 @@ public class DataAPI {
     private Integer brandSize;
     @SerializedName("userId")
     @Expose
-    private Integer userId;
+    private String userId;
     @SerializedName("brand")
     @Expose
     private String brand;
@@ -64,11 +64,11 @@ public class DataAPI {
         this.brandSize = brandSize;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

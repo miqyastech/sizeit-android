@@ -88,7 +88,7 @@ public class FindMySizeSteps5Activity extends BaseActivity {
     private void getProductSizes() {
         DataAPI dataAPI = new DataAPI();
         dataAPI.setApiKey("8MYHPT4-6364FZJ-Q2SW96P-GEBF9QP");
-        dataAPI.setUserId(12345);
+        dataAPI.setUserId(FindMySizeActivity.user_id);
         dataAPI.setHeight(App.preferences.getInt(Constants.height));
         dataAPI.setWeight(App.preferences.getInt(Constants.weight));
         int agePos = App.preferences.getInt(Constants.age);

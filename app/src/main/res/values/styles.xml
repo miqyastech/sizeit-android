@@ -12,6 +12,4 @@
         <item name="android:windowBackground">@color/colorTransparent</item>
     </style>
 
-    <!--progress bar-->
-
 </resources>
