@@ -1,12 +1,12 @@
 # findmysize
 
-<pre><code class="gradle hljs bash"> allprojects {
-repositories {
-jcenter()
-maven { url <span class="hljs-string">"https://jitpack.io"</span> }
+allprojects {
+- repositories {
+-  jcenter()
+- maven { url "https://jitpack.io" }
+-  }
 }
-}
+
 dependencies {
-implementation <span class="hljs-string">'com.github.ViradiyaAmit:findmysize:tag'</span>
+- implementation <span class="hljs-string">'com.github.ViradiyaAmit:findmysize:tag'</span>
 }
-</code></pre>
