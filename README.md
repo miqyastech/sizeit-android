@@ -22,14 +22,14 @@ It will return True if sizes available on storage otherwise it will return false
 ##### 1. Add below code to your project level build.gradle file.
 
 	allprojects {
-  		repositories {
-    		jcenter()
-   		 maven { url "https://jitpack.io" }
- 		 }
+  	repositories {
+    	jcenter()
+   	 maven { url "https://jitpack.io" }
+ 	}
 	}
 
 ##### 2. Add below code to your app level build.gradle file.
 
 	dependencies {
-  	implementation 'com.github.ViradiyaAmit:findmysize:tag'
+  		implementation 'com.github.ViradiyaAmit:findmysize:tag'
 	}
