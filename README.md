@@ -71,4 +71,5 @@ You have successfully implemented library on your project. So, You can access al
 	
 
 X - Add product miqyas_fit.
+
 This function will return the product size of the user as per inputted information if available in local storage.
