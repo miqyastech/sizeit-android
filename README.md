@@ -78,19 +78,7 @@ X - Add product miqyas_fit.
 This function will return the product size of the user as per inputted information if available in local storage.
 
 
-##### 3. If you want to check the sizes are available in local storage then you will get it via below functions.
-
-    /**
-     * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
-     * THEN CALL THE "FindMySizeActivity.hasSizes()" FUNCTION.
-     *
-     * IT WILL RETURN TRUE IF IT IS AVAILABLE ELSE IT IS RETURN FALSE.
-     */
-    public void hashProductSizes() {
-        boolean isAvailable = FindMySizeActivity.hasSizes();
-    }
-
-##### 4. If you want to open user inputs screens like height, weight, age, etc.. then you can do it via the below code.
+##### 3. If you want to open user inputs screens like height, weight, age, etc.. then you can do it via the below code.
 
 	Intent intent = new Intent(this, FindMySizeActivity.class);
     intent.putExtra(Constants.user_id, "X");
