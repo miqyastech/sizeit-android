@@ -75,7 +75,7 @@ X - Add product miqyas_fit.
 This function will return the product size of the user as per inputted information if available in local storage.
 
 
-##### 3. If you want to check the sizes are available in local storage then you can it via below functions.
+##### 3. If you want to check the sizes are available in local storage then you will get it via below functions.
 
     /**
      * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
@@ -85,4 +85,40 @@ This function will return the product size of the user as per inputted informati
      */
     public void hashProductSizes() {
         boolean isAvailable = FindMySizeActivity.hasSizes();
+    }
+
+##### 4. If you want to open user inputs screens like height, weight, age, etc.. then you can do it via the below code.
+
+	Intent intent = new Intent(this, FindMySizeActivity.class);
+    intent.putExtra(Constants.user_id, "X");
+    intent.putExtra(Constants.miqyas_fit, "Y");
+    startActivityForResult(intent, request_code);
+
+X - You will need to add your current user id here.
+Y - You will need to add your product miqyas_fit(product attribute) here.
+
+It will return the miqyas_fit(product attribute) size if it is available in local storage. 
+
+    /**
+     * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
+     * THEN CALL THE "FindMySizeActivity.hasSizes()" FUNCTION.
+     *
+     * IT WILL RETURN TRUE IF IT IS AVAILABLE ELSE IT IS RETURN FALSE.
+     */
+    public void hashProductSizes() {
+        boolean isAvailable = FindMySizeActivity.hasSizes();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == request_code) {
+            if (resultCode == RESULT_OK) {
+                if (data != null && data.hasExtra(FindMySizeActivity.CURRENT_SIZE)) {
+                    if (!data.getStringExtra(FindMySizeActivity.CURRENT_SIZE).equals("")) {
+                        Toast.makeText(this, "Your current size is " + data.getStringExtra(FindMySizeActivity.CURRENT_SIZE), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
     }
