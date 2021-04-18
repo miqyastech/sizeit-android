@@ -43,3 +43,15 @@ You have successfully implemented library on your project. So, You can access al
 
 
 ##### More information about this library:
+
+##### 1. If you want to check the sizes are available on local storage or not then you get it through via below funtions.
+
+	/**
+     * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
+     * THEN CALL THE "FindMySizeActivity.hasSizes()" FUNCTION.
+     *
+     * IT WILL RETURN TRUE IF IT IS AVAILABLE ELSE IT IS RETURN FALSE.
+     */
+    public void hashProductSizes() {
+        boolean isAvailable = FindMySizeActivity.hasSizes();
+    }
