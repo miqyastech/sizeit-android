@@ -42,7 +42,7 @@ dependencies {
 You have successfully implemented library on your project. So, You can access all the library things into your project.
 
 
-##### More information about this library:
+## More information about this library:
 
 ##### 1. If you want to check the sizes are available on local storage or not then you get it through via the below function.
 
