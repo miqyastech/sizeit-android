@@ -89,17 +89,7 @@ X - You will need to add your current user id here.
 
 Y - You will need to add your product miqyas_fit(product attribute) here.
 
-It will return the miqyas_fit(product attribute) size if it is available in local storage. 
-
-    /**
-     * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
-     * THEN CALL THE "FindMySizeActivity.hasSizes()" FUNCTION.
-     *
-     * IT WILL RETURN TRUE IF IT IS AVAILABLE ELSE IT IS RETURN FALSE.
-     */
-    public void hashProductSizes() {
-        boolean isAvailable = FindMySizeActivity.hasSizes();
-    }
+It will return the miqyas_fit(product attribute) size into onActivityResult function if it is available in local storage. 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
