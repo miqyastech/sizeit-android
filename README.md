@@ -46,7 +46,7 @@ You have successfully implemented library on your project. So, You can access al
 
 ##### 1. If you want to check the sizes are available on local storage or not then you get it through via the below function.
 
-	/**
+    /**
      * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
      * THEN CALL THE "FindMySizeActivity.hasSizes()" FUNCTION.
      *
@@ -59,7 +59,7 @@ You have successfully implemented library on your project. So, You can access al
     
 ##### 2. If you want to get a particular product size by product name (miqyas_fit), then you will get it via the below functions.
 
-	/**
+    /**
      * IF YOU WANT TO GET PARTICULAR PRODUCT SIZE BY PRODUCT NAME
      * THEN CALL THE "FindMySizeActivity.getSizeByAttribute('X')" FUNCTION.
      *
@@ -73,3 +73,16 @@ You have successfully implemented library on your project. So, You can access al
 X - Add product miqyas_fit.
 
 This function will return the product size of the user as per inputted information if available in local storage.
+
+
+##### 3. If you want to check the sizes are available in local storage then you can it via below functions.
+
+    /**
+     * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
+     * THEN CALL THE "FindMySizeActivity.hasSizes()" FUNCTION.
+     *
+     * IT WILL RETURN TRUE IF IT IS AVAILABLE ELSE IT IS RETURN FALSE.
+     */
+    public void hashProductSizes() {
+        boolean isAvailable = FindMySizeActivity.hasSizes();
+    }
