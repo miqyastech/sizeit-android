@@ -95,6 +95,7 @@ This function will return the product size of the user as per inputted informati
     startActivityForResult(intent, request_code);
 
 X - You will need to add your current user id here.
+
 Y - You will need to add your product miqyas_fit(product attribute) here.
 
 It will return the miqyas_fit(product attribute) size if it is available in local storage. 
