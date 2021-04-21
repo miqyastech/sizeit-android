@@ -166,19 +166,19 @@ Example to add an event:
 ```javascript
 
 //Call this function when the user opens the app.
-Femi9Utils.initUsers(this, "1234", FindMySizeActivity.hasSizes(), "");
+Femi9Utils.initUsers(this, "1234", FindMySizeActivity.hasSizes());
 
 //Call this function when the user opens the product details screen.
-Femi9Utils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+Femi9Utils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this function when the user adds the product to the cart.
-Femi9Utils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+Femi9Utils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this function when the user buys the product.
-Femi9Utils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+Femi9Utils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this function when the user returns the product.
-Femi9Utils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+Femi9Utils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this funtion when you need to add custom event when ever you want.
 Bundle bundle = new Bundle();
