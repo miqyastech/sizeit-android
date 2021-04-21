@@ -193,12 +193,12 @@ Femi9Utils.addCustomEvent(this, "1234", bundle);
 
 # Localization
 
-You can set language using below code.
+You will set up your localization using below code:
 
 ```javascript
-//You you want to set english lanauage then add below line on your application class.
+//If you want to set the English language then add the below the line on your application class.
 App.initializeLanguage(Constants.language_english);
 
-//You you want to set arabic lanauage then add below line on your application class.
+//If you want to set the Arabic language then add the below the line on your application class.
 App.initializeLanguage(Constants.language_arabic);
 ```
