@@ -1,6 +1,6 @@
 # Find My Size
 
-This library is helping me to find what is my current size for particular products like, Skirt, T-shirts, Tops, and others.
+This library is use to find what is my current size for particular products like, Skirt, T-shirts, Tops, and others.
 
 - At the first time it will take some input from users like Height(FT, CM), Weight(LBS, KG), Age, Stomach, and Hips.
 
@@ -108,4 +108,36 @@ It will return the miqyas_fit(product attribute) size into onActivityResult func
 
 
 
-# Events
+# Facebook Events
+
+You can track your user and product events. There are several functions that use to track user events.
+
+- How many users are visits the application (With size, Without size).
+- Which user visits which product (With size, Without size).
+- Home many users add the product to his cart (With size, Without size).
+- How many users buy the product (With size, Without size).
+- How many users return the product (With size, Without size).
+- Custom events (You can add your custom event if you want).
+
+## Steps to implement facebook events with this library. 
+
+Please configure the facebook in your application by using https://developers.facebook.com/docs/app-events/getting-started-app-events-android/#log-manually link.
+
+##### 1. Add below code to your project level build.gradle file.
+```javascript
+allprojects {
+  repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+  }
+}
+```
+
+##### 2. Add below code to your app level build.gradle file.
+
+```javascript
+dependencies {
+  implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+}
+
