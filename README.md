@@ -1,15 +1,15 @@
-# Find My Size
+# Size It
 
-This library is use to find what is my current size for particular products like, Skirt, T-shirts, Tops, and others.
+This library is the sizeit library for MIQYAS. It is used for fashion e-commerce to suggest sizes to users based on some questions. For more information about sizeit, please visit miqyas.net.
 
-- At the first time it will take some input from users like Height(FT, CM), Weight(LBS, KG), Age, Stomach, and Hips.
+- Please contact us at to get your API key.
 
-- Call one API to get all the product sizes that available on our database and stored them into a locale for future uses.
+- The library will install a button that starts a popup for size reccomendation.
 
 - You will get all the product sizes by calling "FindMySizeActivity.getAllSizes()" function.
 
 - You will get perticular product size by calling "FindMySizeActivity.getSizeByAttribute('X')" function.
-It will return X product size if it is available on locale storage otherwise it will return empty.
+It will return X product size if it is available in locale storage (e.g., user) otherwise it will return empty.
 X - product name(miqyas_fit).
 
 - You will check the product sizes are available or not in the local storage by calling "FindMySizeActivity.hasSizes()" function.
@@ -40,14 +40,14 @@ dependencies {
 ```
 
 ##### Great!!
-You have successfully implemented library on your project. So, You can access all the library things into your project.
+You have successfully implemented sizeit library on your project. Now you can access all the library functionalities.
 
 
 
 
 ## More information about this library:
 
-##### 1. If you want to check the sizes are available on local storage or not then you get it through via the below function.
+##### 1. If you want to check if sizes are available in local storage use the function below:
 
     /**
      * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
@@ -60,7 +60,7 @@ You have successfully implemented library on your project. So, You can access al
     }
     
     
-##### 2. If you want to get a particular product size by product name (miqyas_fit), then you will get it via the below functions.
+##### 2. If you want to get a particular product size by product name (miqyas_fit attribute value), then you will get it via the function below:
 
     /**
      * IF YOU WANT TO GET PARTICULAR PRODUCT SIZE BY PRODUCT NAME
