@@ -157,7 +157,9 @@ public class FindMySizeActivity extends BaseActivity {
             double dCentimeter = (selectPosition + 140);
             int feetPart = (int) Math.floor((dCentimeter / 2.54) / 12);
             int inchesPart = (int) Math.floor((dCentimeter / 2.54) - (feetPart * 12));
-            binding.tvHeightVal.setText(feetPart + "ft " + inchesPart + "in");
+            binding.tvHeightVal.setText(
+                    feetPart + getResources().getString(R.string.ft) + " " +
+                            inchesPart + getResources().getString(R.string.in));
         } else {
             binding.tvHeightVal.setText((selectPosition + 140) + getResources().getString(R.string.cm));
         }

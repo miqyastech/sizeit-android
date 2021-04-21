@@ -1,4 +1,5 @@
 <resources>
+
     <string name="find_my_size">Find My Size</string>
     <string name="step_1_desc">Select your <u>height</u> \n by dragging the rules vertically</string>
     <string name="ft">ft</string>
@@ -39,7 +40,5 @@
     <string name="narrower">Narrower</string>
     <string name="curvier">Curvier</string>
 
-    <string name="height_invalid_err">Please choose height between 140 to 200 cm</string>
-    <string name="weight_invalid_err">Please choose weight between 35 to 150 cm</string>
     <string name="age_invalid_err">Please choose your age</string>
 </resources>

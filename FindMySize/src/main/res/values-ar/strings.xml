@@ -1,27 +1,28 @@
 <resources>
-    <string name="find_my_size">Find My Size</string>
-    <string name="step_1_desc">Select your <u>height</u> \n by dragging the rules vertically</string>
-    <string name="ft">ft</string>
-    <string name="in">in</string>
-    <string name="cm">cm</string>
-    <string name="height">Height</string>
-    <string name="weight">Weight</string>
-    <string name="inches">Inches</string>
-    <string name="lbs">lbs</string>
-    <string name="yrs">yrs</string>
-    <string name="age">Age</string>
-    <string name="continue_">Continue</string>
-    <string name="privacy_policy">Privacy Policy</string>
-    <string name="privacy_policy_1">Your body-dimension data will only be used for size recommendation purposes unless specified in the privacy policy of the entity that you are using our service through.</string>
-    <string name="privacy_policy_2">We do not share your personal information with any third party unless it is specified in the privacy policy of the entity that you are using our service through.</string>
+
+    <string name="find_my_size">اعرف مقاسك</string>
+    <string name="step_1_desc">اختاري <u>طولك</u> \n بتحريك المتر عامودياً</string>
+    <string name="ft">قدم</string>
+    <string name="in">إنش</string>
+    <string name="cm">سم</string>
+    <string name="height">الطول</string>
+    <string name="weight">الوزن</string>
+    <string name="inches">إنش</string>
+    <string name="lbs">رطل</string>
+    <string name="yrs">سنوات</string>
+    <string name="age">العمر</string>
+    <string name="continue_">استمر</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="privacy_policy_1">معلوماتك الخاصة لا يتم الإفصاح عنها لأي طرف ثالث إلا إذا كان ذلك موضّح في سياسة الخصوصية التابعة للجهة التي تستعمل خدمتنا عن طريقها.</string>
+    <string name="privacy_policy_2">معلومات أبعاد جسمك ستُستعمل لغرض اقتراح المقاسات فقط، إلا إذا كان ذلك موضّح في سياسة الخصوصية التابعة للجهة التي تستعمل خدماتنا عن طريقها.</string>
     <string name="powered_by_X">powered by MIQYAS</string>
 
-    <string name="step_2_desc">Select your <u>weight</u> \nby dragging the ruler horizontally</string>
-    <string name="kg">kg</string>
+    <string name="step_2_desc">اختاري <u>وزنك</u> \nبتحريك المتر أفقياً</string>
+    <string name="kg">كج</string>
 
-    <string name="step_3_desc">Select your <u>age</u> \nby selecting the drop down box</string>
+    <string name="step_3_desc">اختاري <u>عمرك</u> \nمن الخيارات التالية</string>
     <string-array name="arrAge">
-        <item>Select age</item>
+        <item>اختاري عمرك</item>
         <item>14–20</item>
         <item>20–30</item>
         <item>30–40</item>
@@ -30,16 +31,14 @@
         <item>60+</item>
     </string-array>
 
-    <string name="step_4_desc">Choose the <u>stomach</u> \nthat most looks like yours</string>
-    <string name="flatter">Flatter</string>
-    <string name="average">Average</string>
-    <string name="rounder">Rounder</string>
+    <string name="step_4_desc">اختاري <u>الصورة</u> \nالأقرب لوصف شكل جسمك</string>
+    <string name="flatter">نحيل</string>
+    <string name="average">متوسط</string>
+    <string name="rounder">مستدير</string>
 
-    <string name="step_5_desc">Choose the <u>hips</u> \nthat look most like yours</string>
-    <string name="narrower">Narrower</string>
-    <string name="curvier">Curvier</string>
+    <string name="step_5_desc">اختاري <u>الصورة</u> \nالأقرب لوصف شكل جسمك</string>
+    <string name="narrower">صغير</string>
+    <string name="curvier">مستدير</string>
 
-    <string name="height_invalid_err">Please choose height between 140 to 200 cm</string>
-    <string name="weight_invalid_err">Please choose weight between 35 to 150 cm</string>
-    <string name="age_invalid_err">Please choose your age</string>
+    <string name="age_invalid_err">الرجاء اختيار العمر</string>
 </resources>
