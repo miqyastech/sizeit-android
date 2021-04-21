@@ -6,7 +6,7 @@
 
         <variable
             name="activity"
-            type="com.femi9.findmysize.FindMySizeSteps4Activity" />
+            type="com.sizeit.findmysize.FindMySizeSteps4Activity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,7 +5,7 @@
 
         <variable
             name="activity"
-            type="com.femi9.tracking.MainActivity" />
+            type="com.sizeit.tracking.MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

@@ -159,33 +159,33 @@ dependencies {
 </application>
 ```
 
-Now, You can add your events to Facebook by calling functions that are available in "Femi9Utils.class" file in the library section.
+Now, You can add your events to Facebook by calling functions that are available in "SizeitUtils.class" file in the library section.
 
 Example to add an event:
 
 ```javascript
 
 //Call this function when the user opens the app.
-Femi9Utils.initUsers(this, "1234", FindMySizeActivity.hasSizes());
+SizeitUtils.initUsers(this, "1234", FindMySizeActivity.hasSizes());
 
 //Call this function when the user opens the product details screen.
-Femi9Utils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+SizeitUtils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this function when the user adds the product to the cart.
-Femi9Utils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+SizeitUtils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this function when the user buys the product.
-Femi9Utils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+SizeitUtils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this function when the user returns the product.
-Femi9Utils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+SizeitUtils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
 //Call this funtion when you need to add custom event when ever you want.
 Bundle bundle = new Bundle();
 bundle.putString("param1", "value1");
 bundle.putInt("param2", 123);
 bundle.putBoolean("param3", true);
-Femi9Utils.addCustomEvent(this, "1234", bundle);
+SizeitUtils.addCustomEvent(this, "1234", bundle);
 ```
 
 

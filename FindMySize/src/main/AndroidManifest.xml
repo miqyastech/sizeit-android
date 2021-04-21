@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.femi9.findmysize">
+    package="com.sizeit.findmysize">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name=".App"
+        android:name="com.sizeit.findmysize.App"
         android:allowBackup="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Transparent">
         <activity
-            android:name=".FindMySizeActivity"
+            android:name="com.sizeit.findmysize.FindMySizeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
-            android:name=".FindMySizeSteps2Activity"
+            android:name="com.sizeit.findmysize.FindMySizeSteps2Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
-            android:name=".FindMySizeSteps3Activity"
+            android:name="com.sizeit.findmysize.FindMySizeSteps3Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
-            android:name=".FindMySizeSteps4Activity"
+            android:name="com.sizeit.findmysize.FindMySizeSteps4Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
-            android:name=".FindMySizeSteps5Activity"
+            android:name="com.sizeit.findmysize.FindMySizeSteps5Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
     </application>
