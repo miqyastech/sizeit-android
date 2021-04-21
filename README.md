@@ -104,3 +104,8 @@ It will return the miqyas_fit(product attribute) size into onActivityResult func
             }
         }
     }
+
+
+
+
+# Events
