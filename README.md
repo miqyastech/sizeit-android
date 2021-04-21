@@ -187,3 +187,18 @@ bundle.putInt("param2", 123);
 bundle.putBoolean("param3", true);
 Femi9Utils.addCustomEvent(this, "1234", bundle);
 ```
+
+
+
+
+# Localization
+
+You can set language using below code.
+
+```javascript
+//You you want to set english lanauage then add below line on your application class.
+App.initializeLanguage(Constants.language_english);
+
+//You you want to set arabic lanauage then add below line on your application class.
+App.initializeLanguage(Constants.language_arabic);
+```
