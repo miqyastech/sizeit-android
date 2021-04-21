@@ -121,7 +121,7 @@ You can track your user and product events. There are several functions that use
 
 ## Steps to implement facebook events with this library. 
 
-Please configure the facebook in your application by using https://developers.facebook.com/docs/app-events/getting-started-app-events-android/#log-manually link.
+Please configure the facebook in your application by using https://developers.facebook.com/docs/app-events/getting-started-app-events-android link.
 
 ##### 1. Add below code to your project level build.gradle file.
 ```javascript
