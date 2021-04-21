@@ -2,9 +2,13 @@ package com.femi9.findmysize;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.app.LocaleChangerAppCompatDelegate;
 
 import com.femi9.utils.ProgressDialog;
 
@@ -12,6 +16,27 @@ import com.femi9.utils.ProgressDialog;
 abstract public class BaseActivity extends AppCompatActivity {
 
     public static int REQUEST_CODE = 228;
+
+    private LocaleChangerAppCompatDelegate localeChangerAppCompatDelegate;
+
+    @NonNull
+    @Override
+    public AppCompatDelegate getDelegate() {
+        if (localeChangerAppCompatDelegate == null) {
+            localeChangerAppCompatDelegate = new LocaleChangerAppCompatDelegate(super.getDelegate());
+        }
+        return localeChangerAppCompatDelegate;
+    }
+
+    @Override
+    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
+        if (overrideConfiguration != null) {
+            int uiMode = overrideConfiguration.uiMode;
+            overrideConfiguration.setTo(getBaseContext().getResources().getConfiguration());
+            overrideConfiguration.uiMode = uiMode;
+        }
+        super.applyOverrideConfiguration(overrideConfiguration);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

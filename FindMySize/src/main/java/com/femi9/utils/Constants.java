@@ -29,4 +29,7 @@ public class Constants {
 
     public static String miqyas_fit = "miqyas_fit";
     public static String user_id = "user_id";
+    public static String hash_size = "hash_size";
+    public static String product_sku = "product_sku";
+    public static String data = "data";
 }

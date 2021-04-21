@@ -3,4 +3,6 @@
 
     <string name="find_my_size">Find My Size</string>
 
+    <string name="facebook_app_id">138561908235025</string>
+    <string name="fb_login_protocol_scheme">fb138561908235025</string>
 </resources>

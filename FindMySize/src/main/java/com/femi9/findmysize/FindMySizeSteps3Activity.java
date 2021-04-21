@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.femi9.findmysize.databinding.ActivityFindMySizeStep3Binding;
 import com.femi9.utils.Constants;
+import com.femi9.utils.Femi9Utils;
 
 
 public class FindMySizeSteps3Activity extends BaseActivity {
@@ -32,6 +33,10 @@ public class FindMySizeSteps3Activity extends BaseActivity {
         if (view == binding.ivBack) {
             onBackPressed();
         } else if (view == binding.btnFindMyFit) {
+            if (binding.spAge.getSelectedItemPosition() == 0) {
+                Femi9Utils.makeToast(this, getResources().getString(R.string.age_invalid_err));
+                return;
+            }
             App.preferences.putInt(Constants.age, binding.spAge.getSelectedItemPosition());
             start(FindMySizeSteps4Activity.class);
         } else if (view == binding.ivClose) {

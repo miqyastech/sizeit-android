@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.femi9.findmysize.adapter.WeightAdapter;
 import com.femi9.findmysize.databinding.ActivityFindMySizeStep2Binding;
 import com.femi9.utils.Constants;
+import com.femi9.utils.Femi9Utils;
 
 public class FindMySizeSteps2Activity extends BaseActivity {
 
@@ -100,9 +101,11 @@ public class FindMySizeSteps2Activity extends BaseActivity {
         } else if (view == binding.tvPrivacyPolicy) {
             binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.VISIBLE);
         } else if (view == binding.btnContinue) {
-            View viewCurrentItem = snapHelper.findSnapView(layoutManager);
-            int currentPosition = binding.rv.getChildAdapterPosition(viewCurrentItem);
-            App.preferences.putInt(Constants.weight, currentPosition);
+            if (selectPosition < 35 || selectPosition > 150) {
+                Femi9Utils.makeToast(this, getResources().getString(R.string.weight_invalid_err));
+                return;
+            }
+            App.preferences.putInt(Constants.weight, selectPosition);
             App.preferences.putInt(Constants.weightSel, isLBSSelected ? 0 : 1);
             start(FindMySizeSteps3Activity.class);
         } else if (view == binding.ivClose) {
@@ -122,12 +125,12 @@ public class FindMySizeSteps2Activity extends BaseActivity {
     private void setHeadingBG(int from) {
         isLBSSelected = (from == 0);
         binding.tvLBSHeading.setBackground(from == 0 ? ContextCompat.getDrawable(this,
-                R.drawable.bg_round_left_fill) : null);
+                App.preferences.isArabic() ? R.drawable.bg_round_left_fill_ar : R.drawable.bg_round_left_fill) : null);
         binding.tvLBSHeading.setTextColor(ContextCompat.getColor(this,
                 from == 0 ? R.color.white : R.color.colorGrayDark));
 
         binding.tvKGHeading.setBackground(from == 1 ? ContextCompat.getDrawable(this,
-                R.drawable.bg_round_right_fill) : null);
+                App.preferences.isArabic() ? R.drawable.bg_round_right_fill_ar : R.drawable.bg_round_right_fill) : null);
         binding.tvKGHeading.setTextColor(ContextCompat.getColor(this,
                 from == 1 ? R.color.white : R.color.colorGrayDark));
     }

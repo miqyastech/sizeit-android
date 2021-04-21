@@ -1,7 +1,12 @@
 package com.femi9.tracking;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -9,11 +14,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.femi9.findmysize.App;
 import com.femi9.findmysize.FindMySizeActivity;
 import com.femi9.findmysize.model.DataSizes;
 import com.femi9.tracking.databinding.ActivityMainBinding;
 import com.femi9.utils.Constants;
+import com.femi9.utils.Femi9Utils;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,12 +35,56 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
+        App.initializeLanguage(Constants.language_arabic);
+        getHashKey();
+        putEvent();
+    }
+
+    private void putEvent() {
+        Femi9Utils.initUsers(this, "1234",
+                FindMySizeActivity.hasSizes(), "");
+
+        Femi9Utils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
+                FindMySizeActivity.hasSizes(), "");
+
+        Femi9Utils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL",
+                FindMySizeActivity.hasSizes(), "");
+
+        Femi9Utils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
+                FindMySizeActivity.hasSizes(), "");
+
+        Femi9Utils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
+                FindMySizeActivity.hasSizes(), "");
+
+        Bundle bundle = new Bundle();
+        bundle.putString("param1", "value1");
+        bundle.putInt("param2", 123);
+        bundle.putBoolean("param3", true);
+        Femi9Utils.addCustomEvent(this, "1234", bundle);
+    }
+
+    private void getHashKey() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(),
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", "KeyHash:" + Base64.encodeToString(md.digest(),
+                        Base64.DEFAULT));
+                Toast.makeText(getApplicationContext(), Base64.encodeToString(md.digest(),
+                        Base64.DEFAULT), Toast.LENGTH_LONG).show();
+            }
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onViewClicked(View view) {
         Intent intent = null;
         if (view == binding.btnFindMyFit) {
             intent = new Intent(this, FindMySizeActivity.class);
+//            intent.putExtra(Constants.miqyas_fit, "Outer Wear-FREE");
         } else if (view == binding.btn4) {
             intent = new Intent(this, FindMySizeActivity.class);
             intent.putExtra(Constants.miqyas_fit, "Outer Wear-FREE");
@@ -52,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * IF YOU WANT TO GET ALL THE PRODUCT SIZE FROM LOCALE
      * THEN CALL THE "FindMySizeActivity.getAllSizes()" FUNCTION.
-     *
+     * <p>
      * IT WILL RETURN ALL SIZE IN STORAGE IF AVAILABLE.
      */
     public void getAllSizesFromLocale() {
@@ -62,17 +115,17 @@ public class MainActivity extends AppCompatActivity {
     /**
      * IF YOU WANT TO GET PARTICULAR PRODUCT SIZE BY PRODUCT NAME
      * THEN CALL THE "FindMySizeActivity.getSizeByAttribute('X')" FUNCTION.
-     *
+     * <p>
      * IT WILL RETURN PARTICULAR PRODUCT SIZE FROM LOCALE IF AVAILABLE.
      */
-    private void getSizeByProductName(){
+    private void getSizeByProductName() {
         FindMySizeActivity.getSizeByAttribute("");
     }
 
     /**
      * IF YOU WANT TO CHECK SIZES ARE AVAILABLE ON LOCALE OR NOT
      * THEN CALL THE "FindMySizeActivity.hasSizes()" FUNCTION.
-     *
+     * <p>
      * IT WILL RETURN TRUE IF IT IS AVAILABLE ELSE IT IS RETURN FALSE.
      */
     public void hashProductSizes() {
@@ -86,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 if (data != null && data.hasExtra(FindMySizeActivity.CURRENT_SIZE)) {
                     if (!data.getStringExtra(FindMySizeActivity.CURRENT_SIZE).equals("")) {
-                        Toast.makeText(this, "Your current size is " + data.getStringExtra(FindMySizeActivity.CURRENT_SIZE), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Your current size is " +
+                                data.getStringExtra(FindMySizeActivity.CURRENT_SIZE), Toast.LENGTH_SHORT).show();
                     }
                 }
             }

@@ -17,6 +17,7 @@ import com.femi9.findmysize.adapter.HeightAdapter;
 import com.femi9.findmysize.databinding.ActivityFindMySizeStep1Binding;
 import com.femi9.findmysize.model.DataSizes;
 import com.femi9.utils.Constants;
+import com.femi9.utils.Femi9Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,9 +135,15 @@ public class FindMySizeActivity extends BaseActivity {
             binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.VISIBLE);
             binding.ivBack.setVisibility(View.VISIBLE);
         } else if (view == binding.btnFindMyFit) {
-            View viewCurrentItem = snapHelper.findSnapView(layoutManager);
-            int currentPosition = binding.rv.getChildAdapterPosition(viewCurrentItem);
-            App.preferences.putInt(Constants.height, currentPosition);
+            if (!isFitSelected && (selectPosition < 140 || selectPosition > 200)) {
+                Femi9Utils.makeToast(this, getResources().getString(R.string.height_invalid_err));
+                return;
+            }
+            if (isFitSelected && (selectPosition < 53 || selectPosition > 78)) {
+                Femi9Utils.makeToast(this, getResources().getString(R.string.height_invalid_err));
+                return;
+            }
+            App.preferences.putInt(Constants.height, selectPosition);
             App.preferences.putInt(Constants.heightSel, isFitSelected ? 0 : 1);
             start(FindMySizeSteps2Activity.class);
         } else if (view == binding.ivClose) {
@@ -147,12 +154,12 @@ public class FindMySizeActivity extends BaseActivity {
     private void setHeadingBG(int from) {
         isFitSelected = (from == 0);
         binding.tvFTHeading.setBackground(from == 0 ? ContextCompat.getDrawable(this,
-                R.drawable.bg_round_left_fill) : null);
+                App.preferences.isArabic() ? R.drawable.bg_round_left_fill_ar : R.drawable.bg_round_left_fill) : null);
         binding.tvFTHeading.setTextColor(ContextCompat.getColor(this,
                 from == 0 ? R.color.white : R.color.colorGrayDark));
 
         binding.tvCMHeading.setBackground(from == 1 ? ContextCompat.getDrawable(this,
-                R.drawable.bg_round_right_fill) : null);
+                App.preferences.isArabic() ? R.drawable.bg_round_right_fill_ar : R.drawable.bg_round_right_fill) : null);
         binding.tvCMHeading.setTextColor(ContextCompat.getColor(this,
                 from == 1 ? R.color.white : R.color.colorGrayDark));
     }
@@ -211,7 +218,7 @@ public class FindMySizeActivity extends BaseActivity {
         if (dataSizes.size() > 0) {
             for (int i = 0; i < dataSizes.size(); i++) {
                 if (dataSizes.get(i).getName().equalsIgnoreCase(miqyas_fit)) {
-                    return dataSizes.get(i).getName();
+                    return dataSizes.get(i).getSize();
                 }
             }
         }
