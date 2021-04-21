@@ -158,3 +158,24 @@ dependencies {
     ...
 </application>
 ```
+
+Now, You can add your events into facebook by calling funtions that are available in "Femi9Utils.class" file in library section.
+Example to add event:
+
+```javascript
+Femi9Utils.initUsers(this, "1234", FindMySizeActivity.hasSizes(), "");
+
+Femi9Utils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+
+Femi9Utils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+
+Femi9Utils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+
+Femi9Utils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes(), "");
+
+Bundle bundle = new Bundle();
+bundle.putString("param1", "value1");
+bundle.putInt("param2", 123);
+bundle.putBoolean("param3", true);
+Femi9Utils.addCustomEvent(this, "1234", bundle);
+```
