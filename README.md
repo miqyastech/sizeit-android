@@ -140,4 +140,21 @@ allprojects {
 dependencies {
   implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
 }
+```
 
+##### 3. Add facebook id in string.xml file
+
+```javascript
+<string name="facebook_app_id">[APP_ID]</string>
+<string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+```
+
+##### 4. Add a meta-data element to the application element In the app/manifests/AndroidManifest.xml file.
+
+```javascript
+<application android:label="@string/app_name" ...>
+    ...
+    <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+    ...
+</application>
+```
