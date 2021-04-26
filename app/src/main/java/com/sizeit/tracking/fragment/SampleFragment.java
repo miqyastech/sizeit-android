@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,7 +45,7 @@ public class SampleFragment extends Fragment {
         if (view == binding.btnFindMyFit) {
             //put language to set locale
             Preferences.getPreferences(getActivity())
-                    .putString(Constants.language, Constants.language_arabic);
+                    .putString(Constants.language, Constants.language_english);
 
             Intent intent = new Intent(getActivity(), FindMySizeActivity.class);
             intent.putExtra(Constants.user_id, "1234");

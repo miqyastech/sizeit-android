@@ -6,32 +6,35 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-    <application
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Transparent">
+    <application android:supportsRtl="true">
         <activity
             android:name="com.sizeit.findmysize.FindMySizeActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
             android:name="com.sizeit.findmysize.FindMySizeSteps2Activity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
             android:name="com.sizeit.findmysize.FindMySizeSteps3Activity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
             android:name="com.sizeit.findmysize.FindMySizeSteps4Activity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <activity
             android:name="com.sizeit.findmysize.FindMySizeSteps5Activity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
     </application>
 </manifest>
