@@ -1,5 +1,6 @@
 package com.sizeit.findmysize;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,11 +18,14 @@ import com.sizeit.findmysize.adapter.HeightAdapter;
 import com.sizeit.findmysize.databinding.ActivityFindMySizeStep1Binding;
 import com.sizeit.findmysize.model.DataSizes;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.Preferences;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FindMySizeActivity extends BaseActivity {
+
+    public static Preferences preferences;
 
     public static final String CURRENT_SIZE = "current_size";
     public static String miqyas_fit = "", user_id = "";
@@ -39,6 +43,7 @@ public class FindMySizeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_find_my_size_step_1);
         binding.setActivity(this);
+        preferences = new Preferences(this);
         if (getIntent() != null) {
             if (getIntent().hasExtra(Constants.user_id)) {
                 user_id = getIntent().getStringExtra(Constants.user_id);
@@ -50,7 +55,7 @@ public class FindMySizeActivity extends BaseActivity {
             } else {
                 miqyas_fit = "";
             }
-            isAttributeAvailableInList();
+//            isAttributeAvailableInList();
         } else {
             miqyas_fit = "";
             user_id = "";
@@ -82,9 +87,9 @@ public class FindMySizeActivity extends BaseActivity {
     }
 
     private void setUpInitialValue() {
-        int pos = App.preferences.getInt(Constants.height, 20);
+        int pos = Preferences.getPreferences(this).getInt(Constants.height, 20);
         if (pos > 140) pos = pos - 140;
-        int selPos = App.preferences.getInt(Constants.heightSel, 1);
+        int selPos = Preferences.getPreferences(this).getInt(Constants.heightSel, 1);
         layoutManager.scrollToPosition(pos);
         setHeadingBG(selPos);
         setSelectedVal();
@@ -130,8 +135,8 @@ public class FindMySizeActivity extends BaseActivity {
 //                SizeitUtils.makeToast(this, getResources().getString(R.string.height_invalid_err));
 //                return;
 //            }
-            App.preferences.putInt(Constants.height, (selectPosition + 140));
-            App.preferences.putInt(Constants.heightSel, isFitSelected ? 0 : 1);
+            Preferences.getPreferences(this).putInt(Constants.height, (selectPosition + 140));
+            Preferences.getPreferences(this).putInt(Constants.heightSel, isFitSelected ? 0 : 1);
             start(FindMySizeSteps2Activity.class);
         } else if (view == binding.ivClose) {
             onBackPressed();
@@ -141,12 +146,12 @@ public class FindMySizeActivity extends BaseActivity {
     private void setHeadingBG(int from) {
         isFitSelected = (from == 0);
         binding.tvFTHeading.setBackground(from == 0 ? ContextCompat.getDrawable(this,
-                App.preferences.isArabic() ? R.drawable.bg_round_left_fill_ar : R.drawable.bg_round_left_fill) : null);
+                Preferences.getPreferences(this).isArabic() ? R.drawable.bg_round_left_fill_ar : R.drawable.bg_round_left_fill) : null);
         binding.tvFTHeading.setTextColor(ContextCompat.getColor(this,
                 from == 0 ? R.color.white : R.color.colorGrayDark));
 
         binding.tvCMHeading.setBackground(from == 1 ? ContextCompat.getDrawable(this,
-                App.preferences.isArabic() ? R.drawable.bg_round_right_fill_ar : R.drawable.bg_round_right_fill) : null);
+                Preferences.getPreferences(this).isArabic() ? R.drawable.bg_round_right_fill_ar : R.drawable.bg_round_right_fill) : null);
         binding.tvCMHeading.setTextColor(ContextCompat.getColor(this,
                 from == 1 ? R.color.white : R.color.colorGrayDark));
     }
@@ -181,7 +186,7 @@ public class FindMySizeActivity extends BaseActivity {
     }
 
     private void isAttributeAvailableInList() {
-        String size = getSizeByAttribute(miqyas_fit);
+        String size = getSizeByAttribute(this, miqyas_fit);
         if (!size.equals("")) {
             Intent intent = new Intent();
             intent.putExtra(FindMySizeActivity.CURRENT_SIZE, size);
@@ -193,8 +198,9 @@ public class FindMySizeActivity extends BaseActivity {
      * @return TRUE - IF SiZES AVAILABLE IN STORAGE
      * FALSE - IF SIZES NOT AVAILABLE IN STORAGE
      */
-    public static boolean hasSizes() {
-        List<DataSizes> dataSizes = App.preferences.getSizesList();
+    public static boolean hasSizes(Context context) {
+        if (context == null) return false;
+        List<DataSizes> dataSizes = Preferences.getPreferences(context).getSizesList();
         return dataSizes.size() != 0;
     }
 
@@ -204,12 +210,13 @@ public class FindMySizeActivity extends BaseActivity {
      * @param attribute
      * @return
      */
-    public static String getSizeByAttribute(String attribute) {
+    public static String getSizeByAttribute(Context context, String attribute) {
         if (attribute == null || attribute.trim().equals("")) return "";
-        List<DataSizes> dataSizes = App.preferences.getSizesList();
+        if (context == null) return "";
+        List<DataSizes> dataSizes = Preferences.getPreferences(context).getSizesList();
         if (dataSizes.size() > 0) {
             for (int i = 0; i < dataSizes.size(); i++) {
-                if (dataSizes.get(i).getName().equalsIgnoreCase(miqyas_fit)) {
+                if (dataSizes.get(i).getName().equalsIgnoreCase(attribute)) {
                     return dataSizes.get(i).getSize();
                 }
             }
@@ -220,9 +227,9 @@ public class FindMySizeActivity extends BaseActivity {
     /**
      * @return GET ALL PRODUCT SIZES WITH NAME IF AVAILABLE
      */
-    public static List<DataSizes> getAllSizes() {
-        if (hasSizes()) {
-            return App.preferences.getSizesList();
+    public static List<DataSizes> getAllSizes(Context context) {
+        if (hasSizes(context)) {
+            return Preferences.getPreferences(context).getSizesList();
         }
         return new ArrayList<>();
     }

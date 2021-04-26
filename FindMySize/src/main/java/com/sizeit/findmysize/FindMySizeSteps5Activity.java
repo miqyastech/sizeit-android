@@ -16,6 +16,7 @@ import com.sizeit.findmysize.model.ResponseSize;
 import com.sizeit.findmysize.network.APIClient;
 import com.sizeit.findmysize.network.MainApi;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.Preferences;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -39,7 +40,7 @@ public class FindMySizeSteps5Activity extends BaseActivity {
     }
 
     private void setUpInitialValue() {
-        selectionPosition = App.preferences.getInt(Constants.belly, 2);
+        selectionPosition = Preferences.getPreferences(this).getInt(Constants.hip, 2);
     }
 
     private void setUpHeaderView() {
@@ -78,7 +79,7 @@ public class FindMySizeSteps5Activity extends BaseActivity {
             selectionPosition = 3;
             setUpHeaderView();
         } else if (view == binding.btnContinue) {
-            App.preferences.putInt(Constants.belly, selectionPosition);
+            Preferences.getPreferences(this).putInt(Constants.hip, selectionPosition);
             getProductSizes();
         } else if (view == binding.ivClose) {
             finishWithResultAndAnimation(null);
@@ -89,10 +90,10 @@ public class FindMySizeSteps5Activity extends BaseActivity {
         DataAPI dataAPI = new DataAPI();
         dataAPI.setApiKey("8MYHPT4-6364FZJ-Q2SW96P-GEBF9QP");
         dataAPI.setUserId(FindMySizeActivity.user_id);
-        dataAPI.setHeight(App.preferences.getInt(Constants.height));
-        dataAPI.setWeight(App.preferences.getInt(Constants.weight));
-        int agePos = App.preferences.getInt(Constants.age);
-        dataAPI.setAge((agePos == 1 ? 17 : agePos == 2 ? 25 : agePos == 3 ? 25 : agePos == 4 ? 45 : agePos == 4 ? 55 : agePos == 5 ? 60 : 0));
+        dataAPI.setHeight(Preferences.getPreferences(this).getInt(Constants.height));
+        dataAPI.setWeight(Preferences.getPreferences(this).getInt(Constants.weight));
+        int agePos = Preferences.getPreferences(this).getInt(Constants.age);
+        dataAPI.setAge(agePos == 1 ? 15 : agePos == 2 ? 25 : agePos == 3 ? 35 : agePos == 4 ? 45 : agePos == 5 ? 60 : 0);
         dataAPI.setBelly(10);
         dataAPI.setHip(10);
         dataAPI.setBrand("");
@@ -108,7 +109,7 @@ public class FindMySizeSteps5Activity extends BaseActivity {
                 if (result.isSuccess()) {
                     if (result.getData() != null && result.getData().getSizes() != null &&
                             result.getData().getSizes().size() > 0) {
-                        App.preferences.setSizesList(result.getData().getSizes());
+                        Preferences.getPreferences(FindMySizeSteps5Activity.this).setSizesList(result.getData().getSizes());
 
                         boolean isFound = false;
                         if (!FindMySizeActivity.miqyas_fit.equals("")) {

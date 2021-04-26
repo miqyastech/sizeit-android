@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.sizeit.findmysize.model.DataSizes;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sizeit.findmysize.model.DataSizes;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -16,10 +16,15 @@ public class Preferences {
 
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;
+    private Preferences preferences;
 
     public Preferences(Context context) {
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = sharedPreferences.edit();
+    }
+
+    public static Preferences getPreferences(Context context) {
+        return new Preferences(context);
     }
 
     public Integer getInt(String key) {
@@ -36,7 +41,11 @@ public class Preferences {
     }
 
     public String getString(String key) {
-        return sharedPreferences.getString(key, "");
+        return getString(key, "");
+    }
+
+    public String getString(String key, String defaultVal) {
+        return sharedPreferences.getString(key, defaultVal);
     }
 
     public void putString(String key, String value) {

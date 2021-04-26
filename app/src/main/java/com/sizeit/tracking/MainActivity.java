@@ -14,11 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.sizeit.findmysize.App;
 import com.sizeit.findmysize.FindMySizeActivity;
 import com.sizeit.findmysize.model.DataSizes;
 import com.sizeit.tracking.databinding.ActivityMainBinding;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.Preferences;
 import com.sizeit.utils.SizeitUtils;
 
 import java.security.MessageDigest;
@@ -35,26 +35,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setActivity(this);
-        App.initializeLanguage(Constants.language_english);
-        getHashKey();
+//        getHashKey();
 //        putEvent();
     }
 
     private void putEvent() {
         SizeitUtils.initUsers(this, "1234",
-                FindMySizeActivity.hasSizes(), "");
+                FindMySizeActivity.hasSizes(this), "");
 
         SizeitUtils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
-                FindMySizeActivity.hasSizes(), "");
+                FindMySizeActivity.hasSizes(this), "");
 
         SizeitUtils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL",
-                FindMySizeActivity.hasSizes(), "");
+                FindMySizeActivity.hasSizes(this), "");
 
         SizeitUtils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
-                FindMySizeActivity.hasSizes(), "");
+                FindMySizeActivity.hasSizes(this), "");
 
         SizeitUtils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
-                FindMySizeActivity.hasSizes(), "");
+                FindMySizeActivity.hasSizes(this), "");
 
         Bundle bundle = new Bundle();
         bundle.putString("param1", "value1");
@@ -81,25 +80,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onViewClicked(View view) {
-        Intent intent = null;
         if (view == binding.btnFindMyFit) {
-            intent = new Intent(this, FindMySizeActivity.class);
+            //put language to set locale
+            Preferences.getPreferences(this).putString(Constants.language, Constants.language_arabic);
+            Intent intent = new Intent(this, FindMySizeActivity.class);
 //            intent.putExtra(Constants.miqyas_fit, "Outer Wear-FREE");
+            intent.putExtra(Constants.user_id, "1234");
+            startActivityForResult(intent, request_code);
         } else if (view == binding.btn4) {
-            intent = new Intent(this, FindMySizeActivity.class);
-            intent.putExtra(Constants.miqyas_fit, "Outer Wear-FREE");
+            SizeitUtils.makeToast(this, FindMySizeActivity.getSizeByAttribute(
+                    this, "Outer Wear-FREE"));
         } else if (view == binding.btn3) {
-            intent = new Intent(this, FindMySizeActivity.class);
-            intent.putExtra(Constants.miqyas_fit, "Pants-XS,S,M,L,XL");
+            SizeitUtils.makeToast(this, FindMySizeActivity.getSizeByAttribute(
+                    this, "Pants-XS,S,M,L,XL"));
         } else if (view == binding.btn2) {
-            intent = new Intent(this, FindMySizeActivity.class);
-            intent.putExtra(Constants.miqyas_fit, "Skirts-S,M,L,XL,XXL");
+            SizeitUtils.makeToast(this, FindMySizeActivity.getSizeByAttribute(
+                    this, "Skirts-S,M,L,XL,XXL"));
         } else if (view == binding.btn1) {
-            intent = new Intent(this, FindMySizeActivity.class);
-            intent.putExtra(Constants.miqyas_fit, "Pants-27,28,29,30,31");
+            SizeitUtils.makeToast(this, FindMySizeActivity.getSizeByAttribute(
+                    this, "Pants-27,28,29,30,31"));
         }
-        intent.putExtra(Constants.user_id, "1234");
-        startActivityForResult(intent, request_code);
     }
 
     /**
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
      * IT WILL RETURN ALL SIZE IN STORAGE IF AVAILABLE.
      */
     public void getAllSizesFromLocale() {
-        List<DataSizes> dataSizes = FindMySizeActivity.getAllSizes();
+        List<DataSizes> dataSizes = FindMySizeActivity.getAllSizes(this);
     }
 
     /**
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
      * IT WILL RETURN PARTICULAR PRODUCT SIZE FROM LOCALE IF AVAILABLE.
      */
     private void getSizeByProductName() {
-        FindMySizeActivity.getSizeByAttribute("");
+        FindMySizeActivity.getSizeByAttribute(this, "");
     }
 
     /**
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
      * IT WILL RETURN TRUE IF IT IS AVAILABLE ELSE IT IS RETURN FALSE.
      */
     public void hashProductSizes() {
-        boolean isAvailable = FindMySizeActivity.hasSizes();
+        boolean isAvailable = FindMySizeActivity.hasSizes(this);
     }
 
     @Override

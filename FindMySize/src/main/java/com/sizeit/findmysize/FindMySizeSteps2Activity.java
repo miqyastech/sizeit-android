@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.sizeit.findmysize.adapter.WeightAdapter;
 import com.sizeit.findmysize.databinding.ActivityFindMySizeStep2Binding;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.Preferences;
 
 public class FindMySizeSteps2Activity extends BaseActivity {
 
@@ -65,9 +66,9 @@ public class FindMySizeSteps2Activity extends BaseActivity {
     }
 
     private void setUpInitialValue() {
-        int pos = App.preferences.getInt(Constants.weight, 15);
+        int pos = Preferences.getPreferences(this).getInt(Constants.weight, 15);
         if (pos > 35) pos = pos - 35;
-        int selPos = App.preferences.getInt(Constants.weightSel, 1);
+        int selPos = Preferences.getPreferences(this).getInt(Constants.weightSel, 1);
         layoutManager.scrollToPosition(pos);
         setHeadingBG(selPos);
         setSelectedVal();
@@ -105,8 +106,8 @@ public class FindMySizeSteps2Activity extends BaseActivity {
 //                SizeitUtils.makeToast(this, getResources().getString(R.string.weight_invalid_err));
 //                return;
 //            }
-            App.preferences.putInt(Constants.weight, selectPosition + 35);
-            App.preferences.putInt(Constants.weightSel, isLBSSelected ? 0 : 1);
+            Preferences.getPreferences(this).putInt(Constants.weight, selectPosition + 35);
+            Preferences.getPreferences(this).putInt(Constants.weightSel, isLBSSelected ? 0 : 1);
             start(FindMySizeSteps3Activity.class);
         } else if (view == binding.ivClose) {
             finishWithResultAndAnimation(null);
@@ -125,12 +126,12 @@ public class FindMySizeSteps2Activity extends BaseActivity {
     private void setHeadingBG(int from) {
         isLBSSelected = (from == 0);
         binding.tvLBSHeading.setBackground(from == 0 ? ContextCompat.getDrawable(this,
-                App.preferences.isArabic() ? R.drawable.bg_round_left_fill_ar : R.drawable.bg_round_left_fill) : null);
+                Preferences.getPreferences(this).isArabic() ? R.drawable.bg_round_left_fill_ar : R.drawable.bg_round_left_fill) : null);
         binding.tvLBSHeading.setTextColor(ContextCompat.getColor(this,
                 from == 0 ? R.color.white : R.color.colorGrayDark));
 
         binding.tvKGHeading.setBackground(from == 1 ? ContextCompat.getDrawable(this,
-                App.preferences.isArabic() ? R.drawable.bg_round_right_fill_ar : R.drawable.bg_round_right_fill) : null);
+                Preferences.getPreferences(this).isArabic() ? R.drawable.bg_round_right_fill_ar : R.drawable.bg_round_right_fill) : null);
         binding.tvKGHeading.setTextColor(ContextCompat.getColor(this,
                 from == 1 ? R.color.white : R.color.colorGrayDark));
     }

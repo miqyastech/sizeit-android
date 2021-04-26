@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.sizeit.findmysize.databinding.ActivityFindMySizeStep3Binding;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.Preferences;
 import com.sizeit.utils.SizeitUtils;
-
 
 public class FindMySizeSteps3Activity extends BaseActivity {
 
@@ -25,7 +25,7 @@ public class FindMySizeSteps3Activity extends BaseActivity {
     }
 
     private void setUpInitialValue() {
-        int selPos = App.preferences.getInt(Constants.age, 0);
+        int selPos = Preferences.getPreferences(this).getInt(Constants.age, 0);
         binding.spAge.setSelection(selPos);
     }
 
@@ -37,7 +37,7 @@ public class FindMySizeSteps3Activity extends BaseActivity {
                 SizeitUtils.makeToast(this, getResources().getString(R.string.age_invalid_err));
                 return;
             }
-            App.preferences.putInt(Constants.age, binding.spAge.getSelectedItemPosition());
+            Preferences.getPreferences(this).putInt(Constants.age, binding.spAge.getSelectedItemPosition());
             start(FindMySizeSteps4Activity.class);
         } else if (view == binding.ivClose) {
             finishWithResultAndAnimation(null);

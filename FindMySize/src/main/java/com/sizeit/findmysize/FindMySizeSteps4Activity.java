@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.sizeit.findmysize.databinding.ActivityFindMySizeStep4Binding;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.Preferences;
 
 
 public class FindMySizeSteps4Activity extends BaseActivity {
@@ -28,7 +29,7 @@ public class FindMySizeSteps4Activity extends BaseActivity {
     }
 
     private void setUpInitialValue() {
-        selectionPosition = App.preferences.getInt(Constants.hip, 2);
+        selectionPosition = Preferences.getPreferences(this).getInt(Constants.belly, 2);
     }
 
     private void setUpHeaderView() {
@@ -65,7 +66,7 @@ public class FindMySizeSteps4Activity extends BaseActivity {
             selectionPosition = 3;
             setUpHeaderView();
         } else if (view == binding.btnContinue) {
-            App.preferences.putInt(Constants.hip, selectionPosition);
+            Preferences.getPreferences(this).putInt(Constants.belly, selectionPosition);
             start(FindMySizeSteps5Activity.class);
         } else if (view == binding.ivClose) {
             finishWithResultAndAnimation(null);

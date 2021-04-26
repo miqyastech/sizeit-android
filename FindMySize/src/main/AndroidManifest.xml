@@ -7,8 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
-        android:name="com.sizeit.findmysize.App"
-        android:allowBackup="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Transparent">
         <activity

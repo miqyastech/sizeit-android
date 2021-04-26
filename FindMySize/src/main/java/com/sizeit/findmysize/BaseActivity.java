@@ -1,31 +1,23 @@
 package com.sizeit.findmysize;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.app.LocaleChangerAppCompatDelegate;
 
+import com.sizeit.utils.LocaleHelper;
 import com.sizeit.utils.ProgressDialog;
-
 
 abstract public class BaseActivity extends AppCompatActivity {
 
     public static int REQUEST_CODE = 228;
 
-    private LocaleChangerAppCompatDelegate localeChangerAppCompatDelegate;
-
-    @NonNull
     @Override
-    public AppCompatDelegate getDelegate() {
-        if (localeChangerAppCompatDelegate == null) {
-            localeChangerAppCompatDelegate = new LocaleChangerAppCompatDelegate(super.getDelegate());
-        }
-        return localeChangerAppCompatDelegate;
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase));
     }
 
     @Override
@@ -71,5 +63,4 @@ abstract public class BaseActivity extends AppCompatActivity {
     public void hideProgress() {
         ProgressDialog.getInstance().dismiss();
     }
-
 }
