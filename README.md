@@ -196,9 +196,9 @@ SizeitUtils.addCustomEvent(this, "1234", bundle);
 You will set up your localization using below code:
 
 ```javascript
-//If you want to set the English language then add the below the line on your application class.
-App.initializeLanguage(Constants.language_english);
+//If you want to set the English language then add the below the line on your class before call the FindMySizeActivity.
+Preferences.getPreferences(this).putString(Constants.language, Constants.language_english);
 
-//If you want to set the Arabic language then add the below the line on your application class.
-App.initializeLanguage(Constants.language_arabic);
+//If you want to set the Arabic language then add the below the line on your class before call the FindMySizeActivity.
+Preferences.getPreferences(this).putString(Constants.language, Constants.language_arabic);
 ```
