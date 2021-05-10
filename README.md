@@ -166,7 +166,32 @@ Example to add an event:
 ```javascript
 
 //Call this function when the user opens the app.
-SizeitUtils.initUsers(this, "1234", FindMySizeActivity.hasSizes());
+//user_id = pass user id
+//hassizes = true if sizes available else false
+//data = other string data if needed
+SizeitUtils.initUsers(this, "user_id", "hassizes");
+SizeitUtils.initUsers(this, "user_id", "hassizes", "data");
+
+/**
+* ADD USER INTO FB EVENT
+*
+* @param activity
+* @param userID   - CURRENT LOGGED IN USER ID.
+* @param hashSize - PASS TRUE IF USER HAS SIZE.
+* @param data     - YOU CAN ADD OTHER STRING/JSON INFORMATION FOR FUTURE USE.
+*/
+public static void initUsers(Activity activity, String userID, boolean hashSize, String data) {
+   AppEventsLogger logger = AppEventsLogger.newLogger(activity);
+   Bundle bundle = new Bundle();
+   bundle.putString(Constants.user_id, userID);
+   bundle.putInt(Constants.hash_size, hashSize ? 1 : 0);
+   bundle.putString(Constants.data, data);
+   logger.logEvent(INIT_USER, bundle);
+}
+
+public static void initUsers(Activity activity, String userID, boolean hashSize) {
+   initUsers(activity, userID, hashSize, null);
+}
 
 //Call this function when the user opens the product details screen.
 SizeitUtils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
