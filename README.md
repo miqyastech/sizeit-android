@@ -205,10 +205,10 @@ public static void initUsers(Activity activity, String userID, boolean hashSize)
 //hassizes = true if sizes available of miqyas_fit else false 
 //data = other string data if needed 
 SizeitUtils.visitProduct(context, "user_id", "miqyas_fit", "hassizes");
-SizeitUtils.visitProduct(context, "user_id", "miqyas_fit", "hassizes", "data");
+SizeitUtils.visitProduct(context, "user_id", "miqyas_fit", "hassizes", "");
 example:
-SizeitUtils.visitProduct(this, "1", "Skirts", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
-SizeitUtils.visitProduct(this, "1", "Skirts", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "");
+SizeitUtils.visitProduct(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
+SizeitUtils.visitProduct(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "");
 
 /**
 * ADD VISIT PRODUCT EVENT
@@ -237,7 +237,12 @@ public static void visitProduct(Activity activity, String userID, String product
 
 ##### 3. Call this function when the user adds the product to the cart.
 ```javascript
-SizeitUtils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+//context = pass your context
+//user_id = pass user id
+//miqyas_fit = pass miqyas_fit/product_id
+//hassizes = true if sizes available of miqyas_fit else false 
+//data = other string data if needed 
+SizeitUtils.addProductToCart(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 ```
 
 ##### 4. Call this function when the user buys the product.
