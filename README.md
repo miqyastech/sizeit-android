@@ -163,9 +163,8 @@ Now, You can add your events to Facebook by calling functions that are available
 
 Example to add an event:
 
+##### 1. Call this function when the user opens the app.
 ```javascript
-
-//Call this function when the user opens the app.
 //user_id = pass user id
 //hassizes = true if sizes available else false
 //data = other string data if needed
@@ -192,7 +191,9 @@ public static void initUsers(Activity activity, String userID, boolean hashSize,
 public static void initUsers(Activity activity, String userID, boolean hashSize) {
    initUsers(activity, userID, hashSize, null);
 }
+```
 
+```javascript
 //Call this function when the user opens the product details screen.
 SizeitUtils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 
