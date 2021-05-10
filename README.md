@@ -208,7 +208,7 @@ SizeitUtils.visitProduct(context, "user_id", "miqyas_fit", "hassizes");
 SizeitUtils.visitProduct(context, "user_id", "miqyas_fit", "hassizes", "data");
 example:
 SizeitUtils.visitProduct(this, "1", "Skirts", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
-SizeitUtils.visitProduct(this, "1", "Skirts", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "data");
+SizeitUtils.visitProduct(this, "1", "Skirts", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "");
 
 /**
 * ADD VISIT PRODUCT EVENT
@@ -235,26 +235,29 @@ public static void visitProduct(Activity activity, String userID, String product
 }
 ```
 
+##### 3. Call this function when the user adds the product to the cart.
 ```javascript
-//Call this function when the user adds the product to the cart.
 SizeitUtils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+```
 
-//Call this function when the user buys the product.
+##### 4. Call this function when the user buys the product.
+```javascript
 SizeitUtils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+```
 
-//Call this function when the user returns the product.
+##### 5. Call this function when the user returns the product.
+```javascript
 SizeitUtils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+```
 
-//Call this funtion when you need to add custom event when ever you want.
+##### 5. Call this function when you need to add custom event when ever you want.
+```javascript
 Bundle bundle = new Bundle();
 bundle.putString("param1", "value1");
 bundle.putInt("param2", 123);
 bundle.putBoolean("param3", true);
 SizeitUtils.addCustomEvent(this, "1234", bundle);
 ```
-
-
-
 
 # Localization
 
