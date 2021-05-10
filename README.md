@@ -4,11 +4,11 @@ This library is the sizeit library for MIQYAS. It is used for fashion e-commerce
 
 - Please contact us at to get your API key.
 
-- The library will install a button that starts a popup for size reccomendation.
+- The library will install a button that starts a popup for size recommendation.
 
 - You will get all the product sizes by calling "FindMySizeActivity.getAllSizes()" function.
 
-- You will get perticular product size by calling "FindMySizeActivity.getSizeByAttribute('X')" function.
+- You will get particular product size by calling "FindMySizeActivity.getSizeByAttribute('X')" function.
 It will return X product size if it is available in locale storage (e.g., user) otherwise it will return empty.
 X - product name(miqyas_fit).
 
@@ -242,25 +242,121 @@ public static void visitProduct(Activity activity, String userID, String product
 //miqyas_fit = pass miqyas_fit/product_id
 //hassizes = true if sizes available of miqyas_fit else false 
 //data = other string data if needed 
-SizeitUtils.addProductToCart(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+SizeitUtils.addProductToCart(context, "user_id", "miqyas_fit", "hassizes");
+SizeitUtils.addProductToCart(context, "user_id", "miqyas_fit", "hassizes", "");
+example:
+SizeitUtils.addProductToCart(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
+SizeitUtils.addProductToCart(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "");
+
+
+/**
+* ADD PRODUCT TO CART EVENT
+*
+* @param activity
+* @param userID      - CURRENT LOGGED IN USER ID.
+* @param product_sku - PRODUCT NAME OF PRODUCT ID
+* @param hashSize    - PASS TRUE IF USER HAS SIZE like, M, L, X, XL, XXL.
+* @param data        - YOU CAN ADD OTHER STRING/JSON INFORMATION LIKE, SKU ID, RECEIPT NUMBER, ORDER DETAILS, ETC.. FOR FUTURE USE.
+*/
+public static void addProductToCart(Activity activity, String userID, String product_sku, boolean hashSize, String data) {
+    AppEventsLogger logger = AppEventsLogger.newLogger(activity);
+    Bundle bundle = new Bundle();
+    bundle.putString(Constants.user_id, userID);
+    bundle.putInt(Constants.hash_size, hashSize ? 1 : 0);
+    bundle.putString(Constants.product_sku, product_sku);
+    bundle.putString(Constants.data, data);
+    logger.logEvent(PRODUCT_ADD_TO_CART, bundle);
+}
+
+public void addProductToCart(Activity activity, String userID, String product_sku, boolean hashSize) {
+    addProductToCart(activity, userID, product_sku, hashSize, null);
+}
 ```
 
 ##### 4. Call this function when the user buys the product.
 ```javascript
-SizeitUtils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+//context = pass your context
+//user_id = pass user id
+//miqyas_fit = pass miqyas_fit/product_id
+//hassizes = true if sizes available of miqyas_fit else false 
+//data = other string data if needed 
+SizeitUtils.buyProduct(context, "user_id", "miqyas_fit", "hassizes");
+SizeitUtils.buyProduct(context, "user_id", "miqyas_fit", "hassizes", "");
+example:
+SizeitUtils.buyProduct(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
+SizeitUtils.buyProduct(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "");
+
+/**
+* BUY PRODUCT EVENT
+*
+* @param activity
+* @param userID      - CURRENT LOGGED IN USER ID.
+* @param hashSize    - PASS TRUE IF USER HAS SIZE like, M, L, X, XL, XXL.
+* @param product_sku - PRODUCT NAME OF PRODUCT ID
+* @param data        - YOU CAN ADD OTHER STRING/JSON INFORMATION LIKE, SKU ID, RECEIPT NUMBER, ORDER DETAILS, ETC.. FOR FUTURE USE.
+*/
+public static void buyProduct(Activity activity, String userID, String product_sku, boolean hashSize, String data) {
+    AppEventsLogger logger = AppEventsLogger.newLogger(activity);
+    Bundle bundle = new Bundle();
+    bundle.putString(Constants.user_id, userID);
+    bundle.putInt(Constants.hash_size, hashSize ? 1 : 0);
+    bundle.putString(Constants.product_sku, product_sku);
+    bundle.putString(Constants.data, data);
+    logger.logEvent(BUY_PRODUCT, bundle);
+}
+
+public static void buyProduct(Activity activity, String userID, String product_sku, boolean hashSize) {
+    buyProduct(activity, userID, product_sku, hashSize);
+}
 ```
 
 ##### 5. Call this function when the user returns the product.
 ```javascript
-SizeitUtils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+//context = pass your context
+//user_id = pass user id
+//miqyas_fit = pass miqyas_fit/product_id
+//hassizes = true if sizes available of miqyas_fit else false 
+//data = other string data if needed 
+SizeitUtils.returnProduct(context, "user_id", "miqyas_fit", "hassizes");
+SizeitUtils.returnProduct(context, "user_id", "miqyas_fit", "hassizes", "");
+example:
+SizeitUtils.returnProduct(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
+SizeitUtils.returnProduct(this, "1", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "");
+
+/**
+* RETURN PRODUCT EVENT
+*
+* @param activity
+* @param userID      - CURRENT LOGGED IN USER ID.
+* @param hashSize    - PASS TRUE IF USER HAS SIZE like, M, L, X, XL, XXL.
+* @param product_sku - PRODUCT NAME OF PRODUCT ID
+* @param data        - YOU CAN ADD OTHER STRING/JSON INFORMATION LIKE, SKU ID, RECEIPT NUMBER, ORDER DETAILS, ETC.. FOR FUTURE USE.
+*/
+public static void returnProduct(Activity activity, String userID, String product_sku, boolean hashSize, String data) {
+    AppEventsLogger logger = AppEventsLogger.newLogger(activity);
+    Bundle bundle = new Bundle();
+    bundle.putString(Constants.user_id, userID);
+    bundle.putInt(Constants.hash_size, hashSize ? 1 : 0);
+    bundle.putString(Constants.product_sku, product_sku);
+    bundle.putString(Constants.data, data);
+    logger.logEvent(RETURN_PRODUCT, bundle);
+}
+
+public static void returnProduct(Activity activity, String userID, String product_sku, boolean hashSize) {
+    returnProduct(activity, userID, product_sku, hashSize);
+}
 ```
 
 ##### 5. Call this function when you need to add custom event when ever you want.
 ```javascript
+//context = pass your context
+//user_id = pass user id
+//bundle = pass bundle
 Bundle bundle = new Bundle();
-bundle.putString("param1", "value1");
-bundle.putInt("param2", 123);
-bundle.putBoolean("param3", true);
+SizeitUtils.addCustomEvent(context, "1", bundle);
+example:
+Bundle bundle = new Bundle();
+bundle.putString("miqyas_fit", "Skirts-S,M,L,XL,XXL");
 SizeitUtils.addCustomEvent(this, "1234", bundle);
 ```
 
