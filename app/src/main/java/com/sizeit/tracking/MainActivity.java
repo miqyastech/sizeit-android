@@ -40,19 +40,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void putEvent() {
-        SizeitUtils.initUsers(this, "1234",
+        SizeitUtils.initUsers(this, "1",
                 FindMySizeActivity.hasSizes(this), "");
 
-        SizeitUtils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
+        SizeitUtils.visitProduct(this, "1", "Skirts-S,M,L,XL,XXL",
+                FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
+
+        SizeitUtils.addProductToCart(this, "1", "Skirts-S,M,L,XL,XXL",
                 FindMySizeActivity.hasSizes(this), "");
 
-        SizeitUtils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL",
+        SizeitUtils.buyProduct(this, "1", "Skirts-S,M,L,XL,XXL",
                 FindMySizeActivity.hasSizes(this), "");
 
-        SizeitUtils.buyProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
-                FindMySizeActivity.hasSizes(this), "");
-
-        SizeitUtils.returnProduct(this, "1234", "Skirts-S,M,L,XL,XXL",
+        SizeitUtils.returnProduct(this, "1", "Skirts-S,M,L,XL,XXL",
                 FindMySizeActivity.hasSizes(this), "");
 
         Bundle bundle = new Bundle();

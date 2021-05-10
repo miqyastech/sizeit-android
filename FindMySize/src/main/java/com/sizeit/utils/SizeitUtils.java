@@ -46,7 +46,7 @@ public class SizeitUtils {
      *
      * @param activity
      * @param userID      - CURRENT LOGGED IN USER ID.
-     * @param product_sku - PASS TRUE IF USER HAS SIZE like, M, L, X, XL, XXL.
+     * @param product_sku - PRODUCT NAME OF PRODUCT ID
      * @param hashSize    - PASS TRUE IF USER HAS SIZE like, M, L, X, XL, XXL.
      * @param data        - YOU CAN ADD OTHER STRING/JSON INFORMATION FOR FUTURE USE.
      */

@@ -165,11 +165,15 @@ Example to add an event:
 
 ##### 1. Call this function when the user opens the app.
 ```javascript
+//context = pass your context
 //user_id = pass user id
 //hassizes = true if sizes available else false
 //data = other string data if needed
-SizeitUtils.initUsers(this, "user_id", "hassizes");
-SizeitUtils.initUsers(this, "user_id", "hassizes", "data");
+SizeitUtils.initUsers(context, "user_id", "hassizes");
+SizeitUtils.initUsers(context, "user_id", "hassizes", "data");
+example:
+SizeitUtils.initUsers(this, "1", FindMySizeActivity.hasSizes(this));
+SizeitUtils.initUsers(this, "1", FindMySizeActivity.hasSizes(this), "");
 
 /**
 * ADD USER INTO FB EVENT
@@ -193,10 +197,45 @@ public static void initUsers(Activity activity, String userID, boolean hashSize)
 }
 ```
 
+##### 2. Call this function when the user opens the product details screen.
 ```javascript
-//Call this function when the user opens the product details screen.
-SizeitUtils.visitProduct(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
+//context = pass your context
+//user_id = pass user id
+//miqyas_fit = pass miqyas_fit/product_id
+//hassizes = true if sizes available of miqyas_fit else false 
+//data = other string data if needed 
+SizeitUtils.visitProduct(context, "user_id", "miqyas_fit", "hassizes");
+SizeitUtils.visitProduct(context, "user_id", "miqyas_fit", "hassizes", "data");
+example:
+SizeitUtils.visitProduct(this, "1", "Skirts", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"));
+SizeitUtils.visitProduct(this, "1", "Skirts", FindMySizeActivity.isAttributeSizeAvailable(this, "Skirts-S,M,L,XL,XXL"), "data");
 
+/**
+* ADD VISIT PRODUCT EVENT
+*
+* @param activity
+* @param userID      - CURRENT LOGGED IN USER ID.
+* @param product_sku - PRODUCT NAME OF PRODUCT ID
+* @param hashSize    - PASS TRUE IF USER HAS SIZE like, M, L, X, XL, XXL.
+* @param data        - YOU CAN ADD OTHER STRING/JSON INFORMATION FOR FUTURE USE.
+*/
+public static void visitProduct(Activity activity, String userID, String product_sku,
+                                    boolean hashSize, String data) {
+    AppEventsLogger logger = AppEventsLogger.newLogger(activity);
+    Bundle bundle = new Bundle();
+    bundle.putString(Constants.user_id, userID);
+    bundle.putInt(Constants.hash_size, hashSize ? 1 : 0);
+    bundle.putString(Constants.product_sku, product_sku);
+    bundle.putString(Constants.data, data);
+    logger.logEvent(PRODUCT_VISIT, bundle);
+}
+
+public static void visitProduct(Activity activity, String userID, String product, boolean hashSize) {
+    visitProduct(activity, userID, product, hashSize, null);
+}
+```
+
+```javascript
 //Call this function when the user adds the product to the cart.
 SizeitUtils.addProductToCart(this, "1234", "Skirts-S,M,L,XL,XXL", FindMySizeActivity.hasSizes());
 

@@ -225,6 +225,26 @@ public class FindMySizeActivity extends BaseActivity {
     }
 
     /**
+     * CHECK AND RETURN ATTRIBUTE SIZE IF AVAILABLE IN STORAGE
+     *
+     * @param attribute
+     * @return
+     */
+    public static Boolean isAttributeSizeAvailable(Context context, String attribute) {
+        if (attribute == null || attribute.trim().equals("")) return false;
+        if (context == null) return false;
+        List<DataSizes> dataSizes = Preferences.getPreferences(context).getSizesList();
+        if (dataSizes.size() > 0) {
+            for (int i = 0; i < dataSizes.size(); i++) {
+                if (dataSizes.get(i).getName().equalsIgnoreCase(attribute)) {
+                    return !dataSizes.get(i).getSize().equalsIgnoreCase("not available");
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * @return GET ALL PRODUCT SIZES WITH NAME IF AVAILABLE
      */
     public static List<DataSizes> getAllSizes(Context context) {
