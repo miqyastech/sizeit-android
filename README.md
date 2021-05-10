@@ -352,12 +352,11 @@ public static void returnProduct(Activity activity, String userID, String produc
 //context = pass your context
 //user_id = pass user id
 //bundle = pass bundle
-Bundle bundle = new Bundle();
-SizeitUtils.addCustomEvent(context, "1", bundle);
+SizeitUtils.addCustomEvent(this, "user_id", bundle);
 example:
 Bundle bundle = new Bundle();
 bundle.putString("miqyas_fit", "Skirts-S,M,L,XL,XXL");
-SizeitUtils.addCustomEvent(this, "1234", bundle);
+SizeitUtils.addCustomEvent(this, "1", bundle);
 ```
 
 # Localization
