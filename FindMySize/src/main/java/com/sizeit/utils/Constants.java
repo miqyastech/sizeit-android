@@ -31,5 +31,6 @@ public class Constants {
     public static String user_id = "user_id";
     public static String hash_size = "hash_size";
     public static String product_sku = "product_sku";
+    public static String api_key = "api_key";
     public static String data = "data";
 }

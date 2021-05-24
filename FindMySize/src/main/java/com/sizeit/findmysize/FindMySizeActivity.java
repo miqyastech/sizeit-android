@@ -19,6 +19,7 @@ import com.sizeit.findmysize.databinding.ActivityFindMySizeStep1Binding;
 import com.sizeit.findmysize.model.DataSizes;
 import com.sizeit.utils.Constants;
 import com.sizeit.utils.Preferences;
+import com.sizeit.utils.SizeitUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class FindMySizeActivity extends BaseActivity {
     public static Preferences preferences;
 
     public static final String CURRENT_SIZE = "current_size";
-    public static String miqyas_fit = "", user_id = "";
+    public static String miqyas_fit = "", user_id = "", api_key = "";
 
     private ActivityFindMySizeStep1Binding binding;
     private boolean isFitSelected;
@@ -54,6 +55,14 @@ public class FindMySizeActivity extends BaseActivity {
                 miqyas_fit = getIntent().getStringExtra(Constants.miqyas_fit);
             } else {
                 miqyas_fit = "";
+            }
+            if (!getIntent().hasExtra(Constants.api_key) ||
+                    getIntent().getStringExtra(Constants.api_key) == null ||
+                    getIntent().getStringExtra(Constants.api_key).trim().isEmpty()) {
+                SizeitUtils.makeToast(this, getResources().getString(R.string.invalid_api_key));
+                finish();
+            } else {
+                api_key = getIntent().getStringExtra(Constants.api_key);
             }
 //            isAttributeAvailableInList();
         } else {

@@ -84,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
             //put language to set locale
             Preferences.getPreferences(this).putString(Constants.language, Constants.language_arabic);
             Intent intent = new Intent(this, FindMySizeActivity.class);
-//            intent.putExtra(Constants.miqyas_fit, "Outer Wear-FREE");
+            intent.putExtra(Constants.miqyas_fit, "Outer Wear-FREE");
+            intent.putExtra(Constants.api_key, "8MYHPT4-6364FZJ-Q2SW96P-GEBF9QP");
             intent.putExtra(Constants.user_id, "1234");
             startActivityForResult(intent, request_code);
         } else if (view == binding.btn4) {

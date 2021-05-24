@@ -50,6 +50,7 @@ public class SampleFragment extends Fragment {
             Intent intent = new Intent(getActivity(), FindMySizeActivity.class);
             intent.putExtra(Constants.user_id, "1234");
             intent.putExtra(Constants.miqyas_fit, "Outer Wear-FREE");
+            intent.putExtra(Constants.api_key, "8MYHPT4-6364FZJ-Q2SW96P-GEBF9QP");
             startActivityForResult(intent, request_code);
         } else if (view == binding.btn4) {
             SizeitUtils.makeToast(getActivity(), "Your current size is " + FindMySizeActivity.getSizeByAttribute(

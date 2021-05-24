@@ -41,4 +41,5 @@
     <string name="curvier">مستدير</string>
 
     <string name="age_invalid_err">الرجاء اختيار العمر</string>
+    <string name="invalid_api_key">مفتاح API غير صالح</string>
 </resources>

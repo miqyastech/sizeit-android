@@ -41,4 +41,5 @@
     <string name="curvier">Curvier</string>
 
     <string name="age_invalid_err">Please choose your age</string>
+    <string name="invalid_api_key">Invalid API key</string>
 </resources>

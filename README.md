@@ -83,11 +83,14 @@ This function will return the product size of the user as per inputted informati
 	Intent intent = new Intent(this, FindMySizeActivity.class);
     intent.putExtra(Constants.user_id, "X");
     intent.putExtra(Constants.miqyas_fit, "Y");
+    intent.putExtra(Constants.api_key, "api_key");
     startActivityForResult(intent, request_code);
 
 X - You will need to add your current user id here.
 
 Y - You will need to add your product miqyas_fit(product attribute) here.
+
+api_key - You will need to add api_key to get all product information.
 
 It will return the miqyas_fit(product attribute) size into onActivityResult function if it is available in local storage. 
 
