@@ -136,23 +136,102 @@ There are several types of events added in this library that described below.
 
 ##### Required parameters:
 
-|  Parameters  |     Value          |       Description                 |
-|--------------|:------------------:|----------------------------------:|
-|  eventType   |  getFitted         |       Type of events              |
-|              |  visitHome         |                                   |
-|              |  visitProduct      |                                   |
-|              |  addToCart         |                                   |
-|              |  buy               |                                   |
-|              |  return            |                                   |
-|              |                    |                                   |
-| projectName  |  Project name      |  Write name of your app           |
-|              |                    |                                   |
-| origin       |  Website URL       |  Write name of your Website       |
-|              |                    |                                   |
-| platform     |  Platform name     |  Write platform name (i.e. web,   |
-|              |                    |  android, iOS, etc...)                                 |
-|              |                    |                                   |
+|  Parameters  |     Value                  |       Description                 |
+|--------------|:--------------------------:|----------------------------------:|
+|  eventType   |  getFitted                 |       Type of events              |
+|              |  visitHome                 |                                   |
+|              |  visitProduct              |                                   |
+|              |  addToCart                 |                                   |
+|              |  buy                       |                                   |
+|              |  return                    |                                   |
+|              |                            |                                   |
+| projectName  |  Project name (abc)        | Write name of your app            |
+|              |                            |                                   |
+| origin       |  Website URL()             | Write name of your Website        |
+|              |  https://www.website.com   |                                   |
+|              |                            |                                   |
+| platform     |  Platform name (ios)       | Write platform name (i.e. web,    |
+|              |                            | android, iOS, etc...)             |
+|              |                            |                                   |
+| userId       |  User id (100)             | Enter userId if user is login     |
+|              |                            | otherwise pass empty or null      |
+|              |                            | library will pass deviceId if     |
+|              |                            | user id is not available          |
+|              |                            |                                   |
+| products     | "products": [              | This is the products list when    |
+|              |  {                         | user visit, buy, return products  |
+|              |   "sku": "AS123",          | then add it like this format.     |
+|              |   "productSkuAbTest":true  |                                   |
+|              |  },                        | products - array format.          |
+|              |  {                         | sku - this is the product         |
+|              |   "sku": "AS987",          |       sku/unique id.              |
+|              |   "productSkuAbTest":false | productSkuAbTest - When user has  |
+|              |  }                         |   size of selected product then   |
+|              | ]                          |   pass true else false.           |
+|              |                            |                                   |
+| orderValue   |  Order Value (1000)        | Enter total value of the order.   |
+|              |                            |                                   |
+| abTest       |  hash size of not value    | If user tried to find his size    |
+|              |  (true false)              | from "find my size" button then   |
+|              |                            | pass true else false              |
+|              |                            |                                   |
+| region       |  Name of the region (US)   | Enter name of the region          |
+|              |                            |                                   |
+|--------------|:--------------------------:|----------------------------------:|
 
+##### How to call events from the application
+
+##### 1. getFitted event - call this event when user click on find my size button.
+
+```javascript
+//project_name = enter your application name here i.e. SizeIt
+//website_url = enter your website url here i.e. https://www.website.com
+//user_id = enter your userId here is user is login in the app otherwise pass empty or null.
+EventUtils.findMySize(context, "project_name", "website_url", "user_id");
+```
+
+##### 2. visitHome event - call this event when user visit home screen.
+
+```javascript
+EventUtils.visitHome(context, "project_name", "website_url", "user_id");
+```
+
+##### 3. visitProduct event - call this event when user visit product details screen.
+
+```javascript
+//products_list = Enter product list here that user visited, add to cart, buy or return
+//This is the array format value like below example.
+
+List<DataProducts> productsList = new ArrayList<>();
+DataProducts products = new DataProducts();
+products.setSku("FU21-0000012B");
+products.setProductSkuAbTest(true);
+productsList.add(products);
+DataProducts products1 = new DataProducts();
+products1.setSku("FU21-0000097A");
+products1.setProductSkuAbTest(false);
+productsList.add(products1);
+
+EventUtils.visitProduct(context, "project_name", "website_url", "user_id", "products_list", "order_value");
+```
+
+##### 4. addToCart event - call this event when user add product to cart.
+
+```javascript
+EventUtils.addToCart(context, "project_name", "website_url", "user_id", "products_list", "order_value");
+```
+
+##### 5. buy event - call this event when user buy product.
+
+```javascript
+EventUtils.buyProduct(context, "project_name", "website_url", "user_id", "products_list", "order_value");
+```
+
+##### 6. return event - call this event when user return product.
+
+```javascript
+EventUtils.returnProduct(context, "project_name", "website_url", "user_id", "products_list", "order_value");
+```
 
 # Facebook Events
 
