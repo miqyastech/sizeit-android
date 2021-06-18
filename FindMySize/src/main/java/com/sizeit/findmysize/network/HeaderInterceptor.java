@@ -19,6 +19,10 @@ public class HeaderInterceptor implements Interceptor {
         Request original = chain.request();
 
         Request.Builder builder = original.newBuilder()
+                .addHeader("Content-Type", "text/html")
+                .addHeader("Accept-Encoding", "gzip, deflate, br")
+                .addHeader("Connection", "keep-alive")
+                .addHeader("Accept", "application/json")
                 .method(original.method(), original.body());
         Request request = builder.build();
         return chain.proceed(request);

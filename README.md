@@ -109,6 +109,49 @@ It will return the miqyas_fit(product attribute) size into onActivityResult func
     }
 
 
+# Localization
+
+You will set up your localization using below code:
+
+```javascript
+//If you want to set the English language then add the below the line on your class before call the FindMySizeActivity.
+Preferences.getPreferences(this).putString(Constants.language, Constants.language_english);
+
+//If you want to set the Arabic language then add the below the line on your class before call the FindMySizeActivity.
+Preferences.getPreferences(this).putString(Constants.language, Constants.language_arabic);
+```
+
+
+# Event Tracking
+
+There are several types of events added in this library that described below.
+1. 'getFitted' = Call this event when user click on "Find My Size" button.
+2. 'visitHome' = Call this event every time when user open the application.
+3. 'visitProduct' = Call this event when user visit/open product.
+4. 'addToCart' = Call this event when user add product to the cart.
+5. 'buy' = Call this event when user buy the product.
+6. 'return' = Call this event when user return the product.
+
+## Brief description about how to call event with required parameters.
+
+##### Required parameters:
+
+|  Parameters  |     Value          |       Description                 |
+|--------------|:------------------:|----------------------------------:|
+|  eventType   |  getFitted         |       Type of events              |
+|              |  visitHome         |                                   |
+|              |  visitProduct      |                                   |
+|              |  addToCart         |                                   |
+|              |  buy               |                                   |
+|              |  return            |                                   |
+|              |                    |                                   |
+| projectName  |  Project name      |  Write name of your app           |
+|              |                    |                                   |
+| origin       |  Website URL       |  Write name of your Website       |
+|              |                    |                                   |
+| platform     |  Platform name     |  Write platform name (i.e. web,   |
+|              |                    |  android, iOS, etc...)                                 |
+|              |                    |                                   |
 
 
 # Facebook Events
@@ -360,16 +403,4 @@ example:
 Bundle bundle = new Bundle();
 bundle.putString("miqyas_fit", "Skirts-S,M,L,XL,XXL");
 SizeitUtils.addCustomEvent(this, "1", bundle);
-```
-
-# Localization
-
-You will set up your localization using below code:
-
-```javascript
-//If you want to set the English language then add the below the line on your class before call the FindMySizeActivity.
-Preferences.getPreferences(this).putString(Constants.language, Constants.language_english);
-
-//If you want to set the Arabic language then add the below the line on your class before call the FindMySizeActivity.
-Preferences.getPreferences(this).putString(Constants.language, Constants.language_arabic);
 ```

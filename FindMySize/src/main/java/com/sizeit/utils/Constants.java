@@ -23,6 +23,7 @@ public class Constants {
     public static String belly = "belly";
 
     public static String baseUrl = "https://sizeitapi.miqyas.net/api/v1/";
+    public static String baseUrlEvent = "https://events.miqyas.net/api/v1/";
 
     public static final int HEIGHT = 61;
     public static final int WEIGHT = 116;

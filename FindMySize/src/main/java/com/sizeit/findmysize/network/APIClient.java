@@ -2,10 +2,10 @@ package com.sizeit.findmysize.network;
 
 import android.app.Activity;
 
-import com.sizeit.findmysize.BuildConfig;
-import com.sizeit.utils.Constants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sizeit.findmysize.BuildConfig;
+import com.sizeit.utils.Constants;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,27 +16,37 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
 
-    private static final Retrofit retrofit = null;
+    public static Gson gson = new GsonBuilder()
+            .setLenient()
+            .serializeNulls()
+            .create();
 
-    public static Retrofit getClient(Activity activity) {
+    private static OkHttpClient.Builder getClient() {
         OkHttpClient.Builder client = new OkHttpClient.Builder();
         client.readTimeout(60, TimeUnit.SECONDS);
         client.connectTimeout(60, TimeUnit.SECONDS);
         client.addInterceptor(new HeaderInterceptor());
-
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
             client.addInterceptor(loggingInterceptor);
         }
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();
+        return client;
+    }
 
+    public static Retrofit getClient(Activity activity) {
         return new Retrofit.Builder()
                 .baseUrl(Constants.baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(client.build())
+                .client(getClient().build())
+                .build();
+    }
+
+    public static Retrofit getEventClient(Activity activity) {
+        return new Retrofit.Builder()
+                .baseUrl(Constants.baseUrlEvent)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(getClient().build())
                 .build();
     }
 }

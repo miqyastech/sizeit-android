@@ -16,19 +16,22 @@ import androidx.databinding.DataBindingUtil;
 
 import com.sizeit.findmysize.FindMySizeActivity;
 import com.sizeit.findmysize.model.DataSizes;
+import com.sizeit.findmysize.model.event.DataProducts;
 import com.sizeit.tracking.databinding.ActivityMainBinding;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.EventUtils;
 import com.sizeit.utils.Preferences;
 import com.sizeit.utils.SizeitUtils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
     private final int request_code = 100;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

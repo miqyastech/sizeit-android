@@ -14,12 +14,15 @@ import androidx.fragment.app.Fragment;
 
 import com.sizeit.findmysize.FindMySizeActivity;
 import com.sizeit.findmysize.model.DataSizes;
+import com.sizeit.findmysize.model.event.DataProducts;
 import com.sizeit.tracking.R;
 import com.sizeit.tracking.databinding.MainFragmentBinding;
 import com.sizeit.utils.Constants;
+import com.sizeit.utils.EventUtils;
 import com.sizeit.utils.Preferences;
 import com.sizeit.utils.SizeitUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SampleFragment extends Fragment {
@@ -38,6 +41,7 @@ public class SampleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false);
         binding.setFragment(this);
+        eventExample();
         return binding.getRoot();
     }
 
@@ -64,6 +68,74 @@ public class SampleFragment extends Fragment {
         } else if (view == binding.btn1) {
             SizeitUtils.makeToast(getActivity(), "Your current size is " + FindMySizeActivity.getSizeByAttribute(
                     getActivity(), "Pants-27,28,29,30,31"));
+        }
+    }
+
+    private void eventExample() {
+        //1. event -> getFitted
+        // userId = If user is login then pass userId otherwise pass null or empty
+        EventUtils.findMySize(getActivity(), "femi9",
+                "https://www.femi9.com", "123");
+
+        //2. event - visitHome
+        EventUtils.visitHome(getActivity(), "femi9",
+                "https://www.femi9.com", "123");
+
+        //3. event - visitProduct
+        // productList = add product list in array format.
+        // sku = product sku id.
+        // productSkuAbTest = if user has size of this particular product like x, xx, L then set TRUE otherwise set FALSE
+        {
+            List<DataProducts> productsList = new ArrayList<>();
+            DataProducts products = new DataProducts();
+            products.setSku("FU21-0000012B");
+            products.setProductSkuAbTest(true);
+            productsList.add(products);
+            EventUtils.visitProduct(getActivity(), "femi9",
+                    "https://www.femi9.com", "123",
+                    productsList, "120");
+        }
+
+        //4. event - addToCart
+        {
+            List<DataProducts> productsList = new ArrayList<>();
+            DataProducts products = new DataProducts();
+            products.setSku("FU21-0000012B");
+            products.setProductSkuAbTest(true);
+            productsList.add(products);
+            EventUtils.addToCart(getActivity(), "femi9",
+                    "https://www.femi9.com", "123",
+                    productsList, "120");
+        }
+
+        //5. event - buy
+        {
+            List<DataProducts> productsList = new ArrayList<>();
+            DataProducts products = new DataProducts();
+            products.setSku("FU21-0000012B");
+            products.setProductSkuAbTest(true);
+            productsList.add(products);
+
+            DataProducts products1 = new DataProducts();
+            products1.setSku("FU21-0000097A");
+            products1.setProductSkuAbTest(false);
+            productsList.add(products1);
+
+            EventUtils.buyProduct(getActivity(), "femi9",
+                    "https://www.femi9.com", "123",
+                    productsList, "560");
+        }
+
+        //5. event - return
+        {
+            List<DataProducts> productsList = new ArrayList<>();
+            DataProducts products = new DataProducts();
+            products.setSku("FU21-0000012B");
+            products.setProductSkuAbTest(true);
+            productsList.add(products);
+            EventUtils.returnProduct(getActivity(), "femi9",
+                    "https://www.femi9.com", "123",
+                    productsList, "120");
         }
     }
 

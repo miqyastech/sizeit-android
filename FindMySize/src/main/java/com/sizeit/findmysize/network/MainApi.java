@@ -2,6 +2,11 @@ package com.sizeit.findmysize.network;
 
 import com.sizeit.findmysize.model.DataAPI;
 import com.sizeit.findmysize.model.ResponseSize;
+import com.sizeit.findmysize.model.event.DataEvent;
+import com.sizeit.findmysize.model.event.DataProducts;
+import com.sizeit.findmysize.model.event.ResponseEvent;
+
+import java.util.HashMap;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -12,4 +17,9 @@ public interface MainApi {
     @POST("measurements")
     Call<ResponseSize> getAllSizes(@Body DataAPI dataAPI);
 
+    @POST("create")
+    Call<ResponseEvent> createEvent(@Body DataEvent dataAPI);
+
+    @POST("create")
+    Call<ResponseEvent> createEvent(@Body HashMap<String, Object> dataAPI);
 }
