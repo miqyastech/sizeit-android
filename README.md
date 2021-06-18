@@ -136,6 +136,24 @@ There are several types of events added in this library that described below.
 
 ##### Required parameters:
 
+<table>
+    <thead>
+      <tr>
+        <th>Parameters</th>
+        <th>Value</th>
+        <th>Description</th>
+        <th>keepUpperCase is true</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>eventType</td>
+            <td>getFitted, visitHome</td>
+            <td>Type of events </td>
+        </tr>
+    </tbody>
+  </table>
+
 |  Parameters  |     Value                  |       Description                 |
 |--------------|:--------------------------:|----------------------------------:|
 |  eventType   |  getFitted                 |       Type of events              |
