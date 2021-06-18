@@ -139,12 +139,11 @@ There are several types of events added in this library that described below.
 |  Parameters  |     Value                  |       Description                 |
 |--------------|:--------------------------:|----------------------------------:|
 |  eventType   |  getFitted                 |       Type of events              |
-|              |  visitHome                 |                                   |
-|              |  visitProduct              |                                   |
-|              |  addToCart                 |                                   |
-|              |  buy                       |                                   |
-|              |  return                    |                                   |
-|              |                            |                                   |
+                  visitHome
+                  visitProduct
+                  addToCart
+                  buy
+                  return                                                                                         |
 | projectName  |  Project name (abc)        | Write name of your app            |
 |              |                            |                                   |
 | origin       |  Website URL()             | Write name of your Website        |
