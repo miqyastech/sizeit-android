@@ -147,59 +147,65 @@ There are several types of events added in this library that described below.
     <tbody>
         <tr>
             <td>eventType</td>
-            <td>getFitted, visitHome, visitProduct, addToCart, buy, return</td>
+            <td>getFitted, visitHome, visitProduct,
+            addToCart, buy, return</td>
             <td>Type of events </td>
         </tr>
         <tr>
             <td>projectName</td>
-            <td>Project name (abc)</td>
+            <td>Project name i.e. abc</td>
             <td>Write name of your app</td>
         </tr>
+        <tr>
+            <td>origin</td>
+            <td>Website URL i.e. https://www.website.com</td>
+            <td>Write name of your Website name</td>
+        </tr>
+        <tr>
+            <td>platform</td>
+            <td>Platform name i.e. iOS</td>
+            <td>Write platform name (i.e. web, android,
+            iOS, etc...)</td>
+        </tr>
+        <tr>
+            <td>userId</td>
+            <td>User id i.e 100</td>
+            <td>Enter userId if user is login otherwise pass empty or
+            null library will pass deviceId if user id is not available</td>
+        </tr>
+        <tr>
+            <td>products</td>
+            <td><code>"products": [
+                        {
+                          "sku": "AS123",
+                          "productSkuAbTest": true
+                        },
+                        {
+                          "sku": "AS987",
+                          "productSkuAbTest": false
+                        }
+                      ]</code></td>
+            <td>This is the products list when user visit, buy, return
+            products then add it like this format.</td>
+        </tr>
+        <tr>
+            <td>orderValue</td>
+            <td>Order Value i.e 100</td>
+            <td>Enter total value of the order.</td>
+        </tr>
+        <tr>
+            <td>abTest</td>
+            <td>hash size of not value i.e true, false</td>
+            <td>If user tried to find his size from "find my size" button then
+            pass true else false</td>
+        </tr>
+        <tr>
+            <td>region</td>
+            <td>Name of the region (US)</td>
+            <td>Enter name of the region</td>
+        </tr>
     </tbody>
-  </table>
-
-
-|  Parameters  |     Value                  |       Description                 |
-|--------------|:--------------------------:|----------------------------------:|
-|  eventType   |  getFitted                 |       Type of events              |
-               |   visitHome                |
-               |   visitProduct             |
-               |   addToCart                |
-               |   buy                      |
-               |   return                   |                                                                      |
-| projectName  |  Project name (abc)        | Write name of your app            |
-|              |                            |                                   |
-| origin       |  Website URL()             | Write name of your Website        |
-|              |  https://www.website.com   |                                   |
-|              |                            |                                   |
-| platform     |  Platform name (ios)       | Write platform name (i.e. web,    |
-|              |                            | android, iOS, etc...)             |
-|              |                            |                                   |
-| userId       |  User id (100)             | Enter userId if user is login     |
-|              |                            | otherwise pass empty or null      |
-|              |                            | library will pass deviceId if     |
-|              |                            | user id is not available          |
-|              |                            |                                   |
-| products     | "products": [              | This is the products list when    |
-|              |  {                         | user visit, buy, return products  |
-|              |   "sku": "AS123",          | then add it like this format.     |
-|              |   "productSkuAbTest":true  |                                   |
-|              |  },                        | products - array format.          |
-|              |  {                         | sku - this is the product         |
-|              |   "sku": "AS987",          |       sku/unique id.              |
-|              |   "productSkuAbTest":false | productSkuAbTest - When user has  |
-|              |  }                         |   size of selected product then   |
-|              | ]                          |   pass true else false.           |
-|              |                            |                                   |
-| orderValue   |  Order Value (1000)        | Enter total value of the order.   |
-|              |                            |                                   |
-| abTest       |  hash size of not value    | If user tried to find his size    |
-|              |  (true false)              | from "find my size" button then   |
-|              |                            | pass true else false              |
-|              |                            |                                   |
-| region       |  Name of the region (US)   | Enter name of the region          |
-|              |                            |                                   |
-|--------------|:--------------------------:|----------------------------------:|
+</table>
 
 ##### How to call events from the application
 
