@@ -142,17 +142,22 @@ There are several types of events added in this library that described below.
         <th>Parameters</th>
         <th>Value</th>
         <th>Description</th>
-        <th>keepUpperCase is true</th>
       </tr>
     </thead>
     <tbody>
         <tr>
             <td>eventType</td>
-            <td>getFitted, visitHome</td>
+            <td>getFitted, visitHome, visitProduct, addToCart, buy, return</td>
             <td>Type of events </td>
+        </tr>
+        <tr>
+            <td>projectName</td>
+            <td>Project name (abc)</td>
+            <td>Write name of your app</td>
         </tr>
     </tbody>
   </table>
+
 
 |  Parameters  |     Value                  |       Description                 |
 |--------------|:--------------------------:|----------------------------------:|
