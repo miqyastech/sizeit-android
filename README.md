@@ -1,5 +1,7 @@
 # Size It
 
+[![](https://jitpack.io/v/miqyastech/sizeit-android-SDK.svg)](https://jitpack.io/#miqyastech/sizeit-android-SDK)
+
 This library is the sizeit library for MIQYAS. It is used for fashion e-commerce to suggest sizes to users based on some questions. For more information about sizeit, please visit miqyas.net.
 
 - Please contact us at to get your API key.
