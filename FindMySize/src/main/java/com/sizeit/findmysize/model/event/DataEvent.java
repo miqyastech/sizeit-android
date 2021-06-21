@@ -1,106 +1,88 @@
 package com.sizeit.findmysize.model.event;
 
 import java.util.List;
-import com.google.gson.annotations.SerializedName;
 
-public class DataEvent{
+public class DataEvent {
 
-	@SerializedName("abTest")
-	private boolean abTest;
+    private boolean abTest;
+    private String origin;
+    private String eventType;
+    private String projectName;
+    private String region;
+    private String userId;
+    private String orderValue;
+    private String platform;
+    private List<DataProducts> products;
 
-	@SerializedName("origin")
-	private String origin;
+    public boolean isAbTest() {
+        return abTest;
+    }
 
-	@SerializedName("eventType")
-	private String eventType;
+    public void setAbTest(boolean abTest) {
+        this.abTest = abTest;
+    }
 
-	@SerializedName("projectName")
-	private String projectName;
+    public String getOrigin() {
+        return origin;
+    }
 
-	@SerializedName("region")
-	private String region;
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
 
-	@SerializedName("userId")
-	private String userId;
+    public String getEventType() {
+        return eventType;
+    }
 
-	@SerializedName("orderValue")
-	private String orderValue;
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
 
-	@SerializedName("platform")
-	private String platform;
+    public String getProjectName() {
+        return projectName;
+    }
 
-	@SerializedName("products")
-	private List<DataProducts> products;
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
-	public void setAbTest(boolean abTest){
-		this.abTest = abTest;
-	}
+    public String getRegion() {
+        return region;
+    }
 
-	public boolean isAbTest(){
-		return abTest;
-	}
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
-	public void setOrigin(String origin){
-		this.origin = origin;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getOrigin(){
-		return origin;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setEventType(String eventType){
-		this.eventType = eventType;
-	}
+    public String getOrderValue() {
+        return orderValue;
+    }
 
-	public String getEventType(){
-		return eventType;
-	}
+    public void setOrderValue(String orderValue) {
+        this.orderValue = orderValue;
+    }
 
-	public void setProjectName(String projectName){
-		this.projectName = projectName;
-	}
+    public String getPlatform() {
+        return platform;
+    }
 
-	public String getProjectName(){
-		return projectName;
-	}
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
 
-	public void setRegion(String region){
-		this.region = region;
-	}
+    public List<DataProducts> getProducts() {
+        return products;
+    }
 
-	public String getRegion(){
-		return region;
-	}
-
-	public void setUserId(String userId){
-		this.userId = userId;
-	}
-
-	public String getUserId(){
-		return userId;
-	}
-
-	public void setOrderValue(String orderValue){
-		this.orderValue = orderValue;
-	}
-
-	public String getOrderValue(){
-		return orderValue;
-	}
-
-	public void setPlatform(String platform){
-		this.platform = platform;
-	}
-
-	public String getPlatform(){
-		return platform;
-	}
-
-	public void setProducts(List<DataProducts> products){
-		this.products = products;
-	}
-
-	public List<DataProducts> getProducts(){
-		return products;
-	}
+    public void setProducts(List<DataProducts> products) {
+        this.products = products;
+    }
 }

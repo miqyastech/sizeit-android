@@ -102,7 +102,7 @@ public class EventUtils {
      * }
      */
     public static void visitHome(Activity activity, String projectName, String origin, String userId) {
-        apiInterface = APIClient.getClient(activity).create(MainApi.class);
+        apiInterface = APIClient.getEventClient(activity).create(MainApi.class);
         DataEvent dataEvent = new DataEvent();
         dataEvent.setEventType(VISIT_HOME);
         dataEvent.setProjectName(projectName);
@@ -145,7 +145,7 @@ public class EventUtils {
     public static void visitProduct(Activity activity, String projectName,
                                     String origin, String userId,
                                     List<DataProducts> productsList, String orderValue) {
-        apiInterface = APIClient.getClient(activity).create(MainApi.class);
+        apiInterface = APIClient.getEventClient(activity).create(MainApi.class);
         DataEvent dataEvent = new DataEvent();
         dataEvent.setEventType(VISIT_PRODUCT);
         dataEvent.setProjectName(projectName);
@@ -187,7 +187,7 @@ public class EventUtils {
     public static void addToCart(Activity activity, String projectName,
                                  String origin, String userId,
                                  List<DataProducts> productsList, String orderValue) {
-        apiInterface = APIClient.getClient(activity).create(MainApi.class);
+        apiInterface = APIClient.getEventClient(activity).create(MainApi.class);
         DataEvent dataEvent = new DataEvent();
         dataEvent.setEventType(ADD_TO_CART);
         dataEvent.setProjectName(projectName);
@@ -229,7 +229,7 @@ public class EventUtils {
     public static void buyProduct(Activity activity, String projectName,
                                   String origin, String userId,
                                   List<DataProducts> productsList, String orderValue) {
-        apiInterface = APIClient.getClient(activity).create(MainApi.class);
+        apiInterface = APIClient.getEventClient(activity).create(MainApi.class);
         DataEvent dataEvent = new DataEvent();
         dataEvent.setEventType(BUY_PRODUCT);
         dataEvent.setProjectName(projectName);
@@ -271,7 +271,7 @@ public class EventUtils {
     public static void returnProduct(Activity activity, String projectName,
                                      String origin, String userId,
                                      List<DataProducts> productsList, String orderValue) {
-        apiInterface = APIClient.getClient(activity).create(MainApi.class);
+        apiInterface = APIClient.getEventClient(activity).create(MainApi.class);
         DataEvent dataEvent = new DataEvent();
         dataEvent.setEventType(RETURN_PRODUCT);
         dataEvent.setProjectName(projectName);
