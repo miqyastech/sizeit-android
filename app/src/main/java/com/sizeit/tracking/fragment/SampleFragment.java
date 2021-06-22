@@ -41,7 +41,7 @@ public class SampleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false);
         binding.setFragment(this);
-//        eventExample();
+        eventExample();
         return binding.getRoot();
     }
 
@@ -74,12 +74,12 @@ public class SampleFragment extends Fragment {
     private void eventExample() {
         //1. event -> getFitted
         // userId = If user is login then pass userId otherwise pass null or empty
-        EventUtils.findMySize(getActivity(), "femi9",
-                "https://www.femi9.com", "123");
+        EventUtils.findMySize(getActivity(), "project_name",
+                "https://www.website.com", "123");
 
         //2. event - visitHome
-        EventUtils.visitHome(getActivity(), "femi9",
-                "https://www.femi9.com", "123");
+        EventUtils.visitHome(getActivity(), "project_name",
+                "https://www.website.com", "123");
 
         //3. event - visitProduct
         // productList = add product list in array format.
@@ -91,8 +91,8 @@ public class SampleFragment extends Fragment {
             products.setSku("FU21-0000012B");
             products.setProductSkuAbTest(true);
             productsList.add(products);
-            EventUtils.visitProduct(getActivity(), "femi9",
-                    "https://www.femi9.com", "123",
+            EventUtils.visitProduct(getActivity(), "project_name",
+                    "https://www.website.com", "123",
                     productsList, "120");
         }
 
@@ -103,8 +103,8 @@ public class SampleFragment extends Fragment {
             products.setSku("FU21-0000012B");
             products.setProductSkuAbTest(true);
             productsList.add(products);
-            EventUtils.addToCart(getActivity(), "femi9",
-                    "https://www.femi9.com", "123",
+            EventUtils.addToCart(getActivity(), "project_name",
+                    "https://www.website.com", "123",
                     productsList, "120");
         }
 
@@ -121,8 +121,8 @@ public class SampleFragment extends Fragment {
             products1.setProductSkuAbTest(false);
             productsList.add(products1);
 
-            EventUtils.buyProduct(getActivity(), "femi9",
-                    "https://www.femi9.com", "123",
+            EventUtils.buyProduct(getActivity(), "project_name",
+                    "https://www.website.com", "123",
                     productsList, "560");
         }
 
@@ -133,8 +133,8 @@ public class SampleFragment extends Fragment {
             products.setSku("FU21-0000012B");
             products.setProductSkuAbTest(true);
             productsList.add(products);
-            EventUtils.returnProduct(getActivity(), "femi9",
-                    "https://www.femi9.com", "123",
+            EventUtils.returnProduct(getActivity(), "project_name",
+                    "https://www.website.com", "123",
                     productsList, "120");
         }
     }
