@@ -198,11 +198,8 @@ There are several types of events added in this library that described below.
             <br />
             <code>
             if product_has_size == true
-		    <br />
                 return true
-		    <br />
             else
-		    <br />
                 return true
             </code>
             </td>
