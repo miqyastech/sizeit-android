@@ -190,11 +190,12 @@ There are several types of events added in this library that described below.
             <td>This is the products list when user visit, buy, return
             products then add it like this format.
             <br />
-            sku - product sku name
+            <b>sku</b> - product sku name
             <br />
-            productSkuAbTest - if user size for this product n1 exists the set true else set else: false
+            <b>productSkuAbTest</b> - if user size for this product n1 exists the set true else set else: false
             <br />
             i.e.
+            <br />
             <code>
             if product_has_size == true
                 return true
