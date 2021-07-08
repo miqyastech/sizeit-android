@@ -41,7 +41,7 @@ public class SampleFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false);
         binding.setFragment(this);
-        eventExample();
+//        eventExample();
         return binding.getRoot();
     }
 
