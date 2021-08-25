@@ -2,7 +2,6 @@ package com.sizeit.utils;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.LocaleList;
 
@@ -14,8 +13,7 @@ public class LocaleHelper {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
 
-        Resources resources = context.getResources();
-        Configuration configuration = resources.getConfiguration();
+        Configuration configuration = new Configuration();
 
         configuration.setLayoutDirection(locale);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -24,6 +22,10 @@ public class LocaleHelper {
             configuration.setLocales(localeList);
         }
         configuration.setLocale(locale);
+
+        context.getResources().updateConfiguration(configuration,
+                context.getResources().getDisplayMetrics());
+
         return context.createConfigurationContext(configuration);
     }
 
