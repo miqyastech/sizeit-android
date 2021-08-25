@@ -13,18 +13,19 @@ public class LocaleHelper {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
 
-        Configuration configuration = new Configuration();
+        Configuration configuration = context.getResources().getConfiguration();
 
         configuration.setLayoutDirection(locale);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             LocaleList localeList = new LocaleList(locale);
             LocaleList.setDefault(localeList);
             configuration.setLocales(localeList);
+        }else {
+            configuration.locale = locale;
+            context.getResources().updateConfiguration(configuration,
+                    context.getResources().getDisplayMetrics());
         }
         configuration.setLocale(locale);
-
-        context.getResources().updateConfiguration(configuration,
-                context.getResources().getDisplayMetrics());
 
         return context.createConfigurationContext(configuration);
     }

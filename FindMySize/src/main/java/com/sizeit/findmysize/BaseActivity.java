@@ -15,20 +15,20 @@ abstract public class BaseActivity extends AppCompatActivity {
 
     public static int REQUEST_CODE = 228;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(LocaleHelper.onAttach(newBase));
-    }
-
-    @Override
-    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
-        if (overrideConfiguration != null) {
-            int uiMode = overrideConfiguration.uiMode;
-            overrideConfiguration.setTo(getBaseContext().getResources().getConfiguration());
-            overrideConfiguration.uiMode = uiMode;
-        }
-        super.applyOverrideConfiguration(overrideConfiguration);
-    }
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        super.attachBaseContext(LocaleHelper.onAttach(newBase));
+//    }
+//
+//    @Override
+//    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
+//        if (overrideConfiguration != null) {
+//            int uiMode = overrideConfiguration.uiMode;
+//            overrideConfiguration.setTo(getBaseContext().getResources().getConfiguration());
+//            overrideConfiguration.uiMode = uiMode;
+//        }
+//        super.applyOverrideConfiguration(overrideConfiguration);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
