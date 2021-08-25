@@ -15,27 +15,19 @@ public class LocaleHelper {
         Locale.setDefault(locale);
 
         Resources resources = context.getResources();
+        Configuration configuration = resources.getConfiguration();
 
-        Configuration configuration = new Configuration(resources.getConfiguration());
         configuration.setLayoutDirection(locale);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            configuration.setLocale(locale);
             LocaleList localeList = new LocaleList(locale);
             LocaleList.setDefault(localeList);
             configuration.setLocales(localeList);
-        } else {
-            configuration.locale = locale;
-            configuration.setLocale(locale);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-            return context.createConfigurationContext(configuration);
-        } else {
-            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-            return context;
-        }
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
     }
 
     public static Context onAttach(Context context) {
-        return setLocale(context, Preferences.getPreferences(context).getString(Constants.language, Constants.language_english));
+        return setLocale(context, Preferences.getPreferences(context).getString(Constants.language, Constants.language_arabic));
     }
 } 
