@@ -8,7 +8,9 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.sizeit.utils.Constants;
 import com.sizeit.utils.LocaleHelper;
+import com.sizeit.utils.Preferences;
 import com.sizeit.utils.ProgressDialog;
 
 abstract public class BaseActivity extends AppCompatActivity {
@@ -33,6 +35,7 @@ abstract public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LocaleHelper.setLocaleContext(this, Preferences.getPreferences(this).getString(Constants.language));
     }
 
     public void start(Class<? extends Activity> activity) {

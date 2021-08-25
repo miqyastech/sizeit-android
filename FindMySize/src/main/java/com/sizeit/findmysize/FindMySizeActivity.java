@@ -26,8 +26,6 @@ import java.util.List;
 
 public class FindMySizeActivity extends BaseActivity {
 
-    public static Preferences preferences;
-
     public static final String CURRENT_SIZE = "current_size";
     public static String miqyas_fit = "", user_id = "", api_key = "";
 
@@ -44,7 +42,6 @@ public class FindMySizeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_find_my_size_step_1);
         binding.setActivity(this);
-        preferences = new Preferences(this);
         if (getIntent() != null) {
             if (getIntent().hasExtra(Constants.user_id)) {
                 user_id = getIntent().getStringExtra(Constants.user_id);
