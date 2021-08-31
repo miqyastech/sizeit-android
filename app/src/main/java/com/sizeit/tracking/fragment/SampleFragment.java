@@ -135,10 +135,10 @@ public class SampleFragment extends Fragment {
             productsList.add(products);
 
             DataProducts products1 = new DataProducts();
-            products.setProduct_id("FU21-0000097A");
+            products1.setProduct_id("FU21-0000097A");
             products1.setProductSkuAbTest(false);
-            products.setCurrency("sar");
-            products.setPrice("100");
+            products1.setCurrency("sar");
+            products1.setPrice("100");
             productsList.add(products1);
 
             EventUtils.buyProduct(getActivity(), "project_name",

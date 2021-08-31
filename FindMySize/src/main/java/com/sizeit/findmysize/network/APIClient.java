@@ -26,11 +26,11 @@ public class APIClient {
         client.readTimeout(60, TimeUnit.SECONDS);
         client.connectTimeout(60, TimeUnit.SECONDS);
         client.addInterceptor(new HeaderInterceptor());
-//        if (BuildConfig.DEBUG) {
-//            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-//            loggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
-//            client.addInterceptor(loggingInterceptor);
-//        }
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
+            client.addInterceptor(loggingInterceptor);
+        }
         return client;
     }
 
