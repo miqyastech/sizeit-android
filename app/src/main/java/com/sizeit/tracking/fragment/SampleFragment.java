@@ -93,13 +93,17 @@ public class SampleFragment extends Fragment {
 
         //3. event - visitProduct
         // productList = add product list in array format.
-        // sku = product sku id.
+        // product_id = product unique id.
         // productSkuAbTest = if user has size of this particular product like x, xx, L then set TRUE otherwise set FALSE
+        // currency = product currency type. i.e. SAR, USD.
+        // price = product price. i.e. 100
         {
             List<DataProducts> productsList = new ArrayList<>();
             DataProducts products = new DataProducts();
-            products.setSku("FU21-0000012B");
+            products.setProduct_id("FU21-0000012B");
             products.setProductSkuAbTest(true);
+            products.setCurrency("sar");
+            products.setPrice("100");
             productsList.add(products);
             EventUtils.visitProduct(getActivity(), "project_name",
                     "https://www.website.com", "123",
@@ -110,8 +114,10 @@ public class SampleFragment extends Fragment {
         {
             List<DataProducts> productsList = new ArrayList<>();
             DataProducts products = new DataProducts();
-            products.setSku("FU21-0000012B");
+            products.setProduct_id("FU21-0000012B");
             products.setProductSkuAbTest(true);
+            products.setCurrency("sar");
+            products.setPrice("100");
             productsList.add(products);
             EventUtils.addToCart(getActivity(), "project_name",
                     "https://www.website.com", "123",
@@ -122,13 +128,17 @@ public class SampleFragment extends Fragment {
         {
             List<DataProducts> productsList = new ArrayList<>();
             DataProducts products = new DataProducts();
-            products.setSku("FU21-0000012B");
+            products.setProduct_id("FU21-0000012B");
             products.setProductSkuAbTest(true);
+            products.setCurrency("sar");
+            products.setPrice("100");
             productsList.add(products);
 
             DataProducts products1 = new DataProducts();
-            products1.setSku("FU21-0000097A");
+            products.setProduct_id("FU21-0000097A");
             products1.setProductSkuAbTest(false);
+            products.setCurrency("sar");
+            products.setPrice("100");
             productsList.add(products1);
 
             EventUtils.buyProduct(getActivity(), "project_name",
@@ -140,8 +150,10 @@ public class SampleFragment extends Fragment {
         {
             List<DataProducts> productsList = new ArrayList<>();
             DataProducts products = new DataProducts();
-            products.setSku("FU21-0000012B");
+            products.setProduct_id("FU21-0000012B");
             products.setProductSkuAbTest(true);
+            products.setCurrency("sar");
+            products.setPrice("100");
             productsList.add(products);
             EventUtils.returnProduct(getActivity(), "project_name",
                     "https://www.website.com", "123",
