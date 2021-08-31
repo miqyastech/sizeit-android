@@ -197,15 +197,14 @@ There are several types of events added in this library that described below.
             <td>
                 This is the products list when user visit, buy, return products then add it like this format.
                 <br/>
+                <br/>
                 <b>product_id</b> - product unique id
                 <br/>
                 <b>productSkuAbTest</b> - if user size for this product n1 exists the set true else set else: false
                 <br/>
                 <b>price</b> - product price.
                 <br/>
-                <b>currency</b> - product currency type.
-                <br/>
-                i.e.
+                <b>currency</b> - product currency type. i.e.
                 <br/>
                 <code>
                 if product_has_size == true
