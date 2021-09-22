@@ -11,57 +11,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_6sdp"
-            android:onClick="@{(v)->activity.onViewClicked(v)}"
-            android:padding="@dimen/_5ssp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:text="@string/find_my_size"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_6sdp"
-            android:onClick="@{(v)->activity.onViewClicked(v)}"
-            android:padding="@dimen/_5ssp"
-            android:src="@drawable/ic_baseline_close_24"
-            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTitle" />
-
-        <View
-            android:id="@+id/viewSeparator"
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:background="@color/colorGray"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            android:layout_height="wrap_content" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvHeading"
@@ -75,14 +33,15 @@
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewSeparator" />
+            app:layout_constraintTop_toBottomOf="@id/header" />
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivArrowDownHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_12sdp"
             android:layout_marginEnd="@dimen/_6sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:onClick="@{(v)->activity.onViewClicked(v)}"
             android:padding="@dimen/_5ssp"
             android:rotation="90"
@@ -104,12 +63,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivArrowDownHeight" />
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivArrowUpHeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginTop="@dimen/_12sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:onClick="@{(v)->activity.onViewClicked(v)}"
             android:padding="@dimen/_5ssp"
             android:rotation="-90"
@@ -226,6 +186,8 @@
             android:onClick="@{(v)->activity.onViewClicked(v)}"
             android:text="@string/privacy_policy"
             android:textColor="@color/colorGrayDark"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -241,7 +203,7 @@
             android:layout_marginTop="@dimen/_2sdp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewSeparator" />
+            app:layout_constraintTop_toBottomOf="@id/header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

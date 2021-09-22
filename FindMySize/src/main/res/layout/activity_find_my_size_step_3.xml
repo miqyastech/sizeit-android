@@ -11,57 +11,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:fitsSystemWindows="true"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:fitsSystemWindows="true">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_6sdp"
-            android:onClick="@{(v)->activity.onViewClicked(v)}"
-            android:padding="@dimen/_5ssp"
-            android:src="@drawable/ic_back"
-            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTitle" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:text="@string/find_my_size"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_18ssp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_6sdp"
-            android:onClick="@{(v)->activity.onViewClicked(v)}"
-            android:padding="@dimen/_5ssp"
-            android:src="@drawable/ic_baseline_close_24"
-            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTitle" />
-
-        <View
-            android:id="@+id/viewSeparator"
+        <include
+            android:id="@+id/header"
+            layout="@layout/layout_header"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_marginStart="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_12sdp"
-            android:background="@color/colorGray"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+            android:layout_height="wrap_content" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvHeading"
@@ -75,7 +33,92 @@
             android:textSize="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/viewSeparator" />
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn1420"
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:text="14 - 20"
+            android:onClick="@{(v)->activity.onViewClicked(v)}"
+            app:cornerRadius="@dimen/_5sdp"
+            app:layout_constraintEnd_toStartOf="@id/btn2030"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvHeading"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn2030"
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:text="20 - 30"
+            android:onClick="@{(v)->activity.onViewClicked(v)}"
+            android:elevation="@dimen/_3sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cornerRadius="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/btn1420"
+            app:layout_constraintTop_toBottomOf="@id/tvHeading"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn3040"
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="30 - 40"
+            android:elevation="@dimen/_3sdp"
+            android:onClick="@{(v)->activity.onViewClicked(v)}"
+            app:cornerRadius="@dimen/_5sdp"
+            app:layout_constraintEnd_toStartOf="@id/btn4050"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn1420"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn4050"
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="40 - 50"
+            android:elevation="@dimen/_3sdp"
+            android:onClick="@{(v)->activity.onViewClicked(v)}"
+            app:cornerRadius="@dimen/_5sdp"
+            app:layout_constraintStart_toEndOf="@id/btn3040"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn1420"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn5060"
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="50 - 60"
+            android:elevation="@dimen/_3sdp"
+            app:cornerRadius="@dimen/_5sdp"
+            android:onClick="@{(v)->activity.onViewClicked(v)}"
+            app:layout_constraintEnd_toStartOf="@id/btn60"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn3040"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn60"
+            style="@style/PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="60+"
+            android:elevation="@dimen/_3sdp"
+            android:hint="50 - 60"
+            app:cornerRadius="@dimen/_5sdp"
+            android:onClick="@{(v)->activity.onViewClicked(v)}"
+            app:layout_constraintStart_toEndOf="@id/btn5060"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn3040"/>
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spAge"
@@ -85,6 +128,7 @@
             android:background="@drawable/bg_round_border"
             android:entries="@array/arrAge"
             android:spinnerMode="dialog"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvHeading" />
@@ -94,6 +138,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_6sdp"
             android:rotation="-90"
+            android:visibility="gone"
             android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="@id/spAge"
             app:layout_constraintEnd_toEndOf="@id/spAge"
@@ -114,9 +159,10 @@
             android:text="@string/continue_"
             android:textColor="@color/colorGrayDark"
             android:textStyle="normal"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spAge" />
+            app:layout_constraintTop_toBottomOf="@id/btn60" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

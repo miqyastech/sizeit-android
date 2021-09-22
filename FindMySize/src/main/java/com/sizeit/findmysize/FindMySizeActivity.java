@@ -3,7 +3,12 @@ package com.sizeit.findmysize;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -70,6 +75,13 @@ public class FindMySizeActivity extends BaseActivity {
     }
 
     private void setUpHeaderView() {
+        binding.header.ivBack.setVisibility(View.GONE);
+        binding.header.ivBack.setOnClickListener(v -> {
+            binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.GONE);
+            binding.header.ivBack.setVisibility(View.GONE);
+        });
+        binding.header.ivClose.setOnClickListener(v -> onBackPressed());
+
         layoutManager = new LinearLayoutManager(this);
         binding.rv.setLayoutManager(layoutManager);
         binding.rv.setAdapter(new HeightAdapter());
@@ -126,12 +138,13 @@ public class FindMySizeActivity extends BaseActivity {
                 layoutManager.scrollToPosition(selectPosition);
                 setSelectedVal();
             }
-        } else if (view == binding.ivBack) {
-            binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.GONE);
-            binding.ivBack.setVisibility(View.GONE);
         } else if (view == binding.tvPrivacyPolicy) {
+            Transition transition = new Slide(Gravity.BOTTOM);
+            transition.setDuration(500);
+            transition.addTarget(binding.layoutPrivacyPolicy.clPPMain);
+            TransitionManager.beginDelayedTransition((ViewGroup)binding.layoutPrivacyPolicy.clPPMain.getParent(), transition);
             binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.VISIBLE);
-            binding.ivBack.setVisibility(View.VISIBLE);
+            binding.header.ivBack.setVisibility(View.VISIBLE);
         } else if (view == binding.btnFindMyFit) {
 //            if (!isFitSelected && (selectPosition < 140 || selectPosition > 200)) {
 //                SizeitUtils.makeToast(this, getResources().getString(R.string.height_invalid_err));
@@ -144,8 +157,6 @@ public class FindMySizeActivity extends BaseActivity {
             Preferences.getPreferences(this).putInt(Constants.height, (selectPosition + 140));
             Preferences.getPreferences(this).putInt(Constants.heightSel, isFitSelected ? 0 : 1);
             start(FindMySizeSteps2Activity.class);
-        } else if (view == binding.ivClose) {
-            onBackPressed();
         }
     }
 

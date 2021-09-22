@@ -2,8 +2,13 @@ package com.sizeit.findmysize;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +44,9 @@ public class FindMySizeSteps2Activity extends BaseActivity {
     }
 
     private void setUpHeaderView() {
+        binding.header.ivBack.setOnClickListener(v -> onBackPressed());
+        binding.header.ivClose.setOnClickListener(v -> finishWithResultAndAnimation(null));
+
         layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
         binding.rv.setLayoutManager(layoutManager);
         binding.rv.setAdapter(new WeightAdapter());
@@ -97,9 +105,11 @@ public class FindMySizeSteps2Activity extends BaseActivity {
                 layoutManager.scrollToPosition(selectPosition);
                 setSelectedVal();
             }
-        } else if (view == binding.ivBack) {
-            onBackPressed();
         } else if (view == binding.tvPrivacyPolicy) {
+            Transition transition = new Slide(Gravity.BOTTOM);
+            transition.setDuration(500);
+            transition.addTarget(binding.layoutPrivacyPolicy.clPPMain);
+            TransitionManager.beginDelayedTransition((ViewGroup)binding.layoutPrivacyPolicy.clPPMain.getParent(), transition);
             binding.layoutPrivacyPolicy.clPPMain.setVisibility(View.VISIBLE);
         } else if (view == binding.btnContinue) {
 //            if (selectPosition < 35 || selectPosition > 150) {
@@ -109,8 +119,6 @@ public class FindMySizeSteps2Activity extends BaseActivity {
             Preferences.getPreferences(this).putInt(Constants.weight, selectPosition + 35);
             Preferences.getPreferences(this).putInt(Constants.weightSel, isLBSSelected ? 0 : 1);
             start(FindMySizeSteps3Activity.class);
-        } else if (view == binding.ivClose) {
-            finishWithResultAndAnimation(null);
         }
     }
 

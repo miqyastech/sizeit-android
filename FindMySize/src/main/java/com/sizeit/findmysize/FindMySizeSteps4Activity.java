@@ -29,6 +29,9 @@ public class FindMySizeSteps4Activity extends BaseActivity {
     }
 
     private void setUpInitialValue() {
+        binding.header.ivBack.setOnClickListener(v -> onBackPressed());
+        binding.header.ivClose.setOnClickListener(v -> finishWithResultAndAnimation(null));
+
         selectionPosition = Preferences.getPreferences(this).getInt(Constants.belly, 2);
     }
 
@@ -54,9 +57,7 @@ public class FindMySizeSteps4Activity extends BaseActivity {
     }
 
     public void onViewClicked(View view) {
-        if (view == binding.ivBack) {
-            onBackPressed();
-        } else if (view == binding.tvFlatter) {
+        if (view == binding.tvFlatter) {
             selectionPosition = 1;
             setUpHeaderView();
         } else if (view == binding.tvAverage) {
@@ -68,8 +69,6 @@ public class FindMySizeSteps4Activity extends BaseActivity {
         } else if (view == binding.btnContinue) {
             Preferences.getPreferences(this).putInt(Constants.belly, selectionPosition);
             start(FindMySizeSteps5Activity.class);
-        } else if (view == binding.ivClose) {
-            finishWithResultAndAnimation(null);
         }
     }
 
